@@ -105,6 +105,39 @@
       color: var(--accent);
       font-weight: 600;
     }
+
+    /* 收起/展开按钮 */
+    .collapse-btn, .expand-btn {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--ink);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s, color .15s;
+    }
+    .collapse-btn:hover, .expand-btn:hover {
+      background: var(--bg2);
+      color: var(--accent);
+    }
+    .collapse-btn {
+      position: absolute;
+      top: 1rem; right: 1rem;
+    }
+    .expand-btn {
+      position: fixed;
+      top: 1rem; left: 1rem;
+      z-index: 99;
+      display: none;
+      box-shadow: var(--shadow);
+    }
+    .sidebar.collapsed + .expand-btn {
+      display: flex;
+    }
     .sidebar-toggle {
       display: none;
       position: fixed;
@@ -124,6 +157,15 @@
     article.page {
       margin-left: 220px;
       max-width: none;
+      transition: margin-left .25s ease;
+    }
+    article.page.collapsed {
+      margin-left: 0;
+    }
+
+    /* 桌面端收起状态 */
+    .sidebar.collapsed {
+      transform: translateX(-100%);
     }
 
     @media (max-width: 900px) {
@@ -133,6 +175,15 @@
       .sidebar.open {
         transform: translateX(0);
       }
+      .sidebar.collapsed {
+        transform: translateX(-100%);
+      }
+      .collapse-btn {
+        display: none;
+      }
+      .expand-btn {
+        display: none;
+      }
       .sidebar-toggle {
         display: flex;
         align-items: center;
@@ -141,6 +192,9 @@
       article.page {
         margin-left: 0;
         padding-top: 3.5rem;
+      }
+      article.page.collapsed {
+        margin-left: 0;
       }
     }
     h1, h2, h3, h4 { line-height: 1.3; color: var(--ink); font-weight: 700; }
@@ -606,6 +660,7 @@
 
   <!-- ============================ 侧边栏导航 ============================ -->
   <aside class="sidebar" id="sidebar">
+    <button class="collapse-btn" id="collapseBtn" aria-label="收起导航">←</button>
     <div class="sidebar-brand">
       <div class="sidebar-title">AI 提效手册</div>
       <div class="sidebar-sub">快速导航</div>
@@ -621,6 +676,7 @@
     </nav>
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换导航">☰</button>
   </aside>
+  <button class="expand-btn" id="expandBtn" aria-label="展开导航">→</button>
 
   <article class="page" id="page">
 
@@ -949,7 +1005,11 @@
     (function() {
       // 移动端侧边栏切换
       var sidebar = document.getElementById('sidebar');
+      var page = document.getElementById('page');
       var toggle = document.getElementById('sidebarToggle');
+      var collapse = document.getElementById('collapseBtn');
+      var expand = document.getElementById('expandBtn');
+
       if (toggle && sidebar) {
         toggle.addEventListener('click', function(e) {
           e.stopPropagation();
@@ -959,6 +1019,20 @@
           if (window.innerWidth <= 900 && sidebar.classList.contains('open') && !sidebar.contains(e.target)) {
             sidebar.classList.remove('open');
           }
+        });
+      }
+
+      // 桌面端收起/展开
+      if (collapse && sidebar && page) {
+        collapse.addEventListener('click', function() {
+          sidebar.classList.add('collapsed');
+          page.classList.add('collapsed');
+        });
+      }
+      if (expand && sidebar && page) {
+        expand.addEventListener('click', function() {
+          sidebar.classList.remove('collapsed');
+          page.classList.remove('collapsed');
         });
       }
 
