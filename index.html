@@ -43,8 +43,106 @@
        ===================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { padding: 0; }
+    html { scroll-padding-top: 2rem; }
     a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
     a:hover { color: var(--accent); border-bottom-style: solid; }
+
+    /* =====================================================
+       左侧固定侧边栏导航
+       ===================================================== */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 220px;
+      height: 100vh;
+      background: var(--bg3);
+      border-right: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 0;
+      z-index: 100;
+      transition: transform .25s ease;
+    }
+    .sidebar-brand {
+      padding: 0 1.5rem 1.2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 1rem;
+    }
+    .sidebar-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .sidebar-sub {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .2rem;
+      letter-spacing: .08em;
+    }
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: .15rem;
+      padding: 0 .8rem;
+      overflow-y: auto;
+    }
+    .sidebar-nav a {
+      display: block;
+      padding: .55rem .9rem;
+      border-radius: 8px;
+      color: var(--ink2);
+      border-bottom: none;
+      font-size: .9rem;
+      transition: background .15s, color .15s;
+    }
+    .sidebar-nav a:hover {
+      background: var(--bg2);
+      color: var(--ink);
+    }
+    .sidebar-nav a.active {
+      background: rgba(217,96,43,.1);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .sidebar-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem; left: 1rem;
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--ink);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 101;
+      box-shadow: var(--shadow);
+    }
+
+    /* 主内容区让出左侧空间 */
+    .page {
+      margin-left: 220px;
+      max-width: none;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .page {
+        margin-left: 0;
+        padding-top: 3.5rem;
+      }
+    }
     h1, h2, h3, h4 { line-height: 1.3; color: var(--ink); font-weight: 700; }
     h2 { font-size: 1.65rem; margin: 0 0 1rem; letter-spacing: 0.01em; }
     h3 { font-size: 1.15rem; margin: 0 0 .6rem; }
@@ -506,10 +604,28 @@
 </head>
 <body>
 
-  <article class="page">
+  <!-- ============================ 侧边栏导航 ============================ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-title">AI 提效手册</div>
+      <div class="sidebar-sub">快速导航</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#hero" class="nav-link active">首页</a>
+      <a href="#sec-pain" class="nav-link">00 / 共鸣</a>
+      <a href="#sec-vm" class="nav-link">01 / 学业</a>
+      <a href="#sec-final" class="nav-link">02 / 期末</a>
+      <a href="#sec-tools" class="nav-link">03 / 工具</a>
+      <a href="#sec-checklist" class="nav-link">04 / 上手</a>
+      <a href="#sec-cta" class="nav-link">05 / 收尾</a>
+    </nav>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换导航">☰</button>
+  </aside>
+
+  <article class="page" id="page">
 
     <!-- ============================ HERO ============================ -->
-    <header class="hero">
+    <header class="hero" id="hero">
       <span class="kicker">大学生 AI 提效手册</span>
       <h1>三小时搞定实训，一晚上搞定期末复习，<br>你<em>还没用上</em>这些 AI 技巧嘛？</h1>
       <div class="hero-meta">
@@ -521,7 +637,7 @@
     </header>
 
     <!-- ============================ 痛点共鸣 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-pain">
       <span class="chapter-num">00 / 共鸣</span>
       <h2>先看看你是不是也这样</h2>
       <p>以下场景，每个都对应一种 AI 解法——我后面会逐个演示。</p>
@@ -551,7 +667,7 @@
     </section>
 
     <!-- ============================ 第一关：装虚机 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-vm">
       <span class="chapter-num">01 / 学业</span>
       <h2>三小时搞定实训：用 Agent 接管一台 Linux 虚机</h2>
       <p class="lede">
@@ -645,7 +761,7 @@
     </section>
 
     <!-- ============================ 第二关：期末复习 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-final">
       <span class="chapter-num">02 / 期末</span>
       <h2>一晚上搞定期末复习：让 AI 帮你出题 + 解析</h2>
       <p class="lede">
@@ -678,7 +794,7 @@
     </section>
 
     <!-- ============================ 第三关：五家横评 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-tools">
       <span class="chapter-num">03 / 工具</span>
       <h2>薅遍 5 家 AI IDE：一张表看清谁更划算</h2>
       <p class="lede">
@@ -764,7 +880,7 @@
     </section>
 
     <!-- ============================ 3 分钟复刻清单 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-checklist">
       <span class="chapter-num">04 / 上手</span>
       <h2>3 分钟复刻我的工作流</h2>
       <p>看完上面的演示，按下面 5 步走一遍，今晚就能用上。</p>
@@ -794,7 +910,7 @@
     </section>
 
     <!-- ============================ 底部转化 ============================ -->
-    <section class="chapter">
+    <section class="chapter" id="sec-cta">
       <span class="chapter-num">05 / 收尾</span>
       <h2>带走这套工作流</h2>
 
@@ -828,6 +944,49 @@
     </footer>
 
   </article>
+
+  <script>
+    (function() {
+      // 移动端侧边栏切换
+      var sidebar = document.getElementById('sidebar');
+      var toggle = document.getElementById('sidebarToggle');
+      if (toggle && sidebar) {
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          sidebar.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e) {
+          if (window.innerWidth <= 900 && sidebar.classList.contains('open') && !sidebar.contains(e.target)) {
+            sidebar.classList.remove('open');
+          }
+        });
+      }
+
+      // 滚动高亮当前章节
+      var links = document.querySelectorAll('.sidebar-nav a');
+      var sections = [];
+      links.forEach(function(a) {
+        var id = a.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: a });
+      });
+
+      function onScroll() {
+        var scrollY = window.scrollY + 80;
+        var current = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].el.offsetTop <= scrollY) {
+            current = sections[i];
+          }
+        }
+        links.forEach(function(a) { a.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 
 </body>
 </html>
