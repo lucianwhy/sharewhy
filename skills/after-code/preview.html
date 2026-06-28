@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>after-code preview</title>
+  <style>
+    :root{--bg:#f7f3ec;--paper:#fffdfa;--paper-2:#fcf7f0;--line:#dfd2c3;--text:#2c241d;--muted:#6f665d;--risk:#894d4d;--shadow:0 18px 40px rgba(101,82,60,.10)}
+    *{box-sizing:border-box} body{margin:0;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcf8f2 0%,#f2eadf 100%)}
+    .page{max-width:1480px;margin:0 auto;padding:28px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}h1{margin:0 0 8px;font-size:30px}.hero p{margin:0;color:var(--muted);line-height:1.6;max-width:940px}.chip{padding:8px 12px;border-radius:999px;background:#fff4e8;border:1px solid #e5c7a8;color:#885431;font-size:13px;white-space:nowrap}
+    .shell{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:rgba(255,253,250,.92)}.topnote{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px;background:linear-gradient(180deg,#fffdf9 0%,#fbf2e7 100%);border-bottom:1px solid #eadccb}.topnote strong{display:block;margin-bottom:4px;font-size:16px}.topnote span{color:var(--muted);font-size:13px}
+    .card{display:grid;grid-template-columns:90px 250px 1fr;min-height:980px}.card.collapsed{grid-template-columns:90px 0 1fr}.rail{border-right:1px solid #e6d8c7;background:linear-gradient(180deg,#f2e7d7 0%,#efe0cd 100%);padding:16px 12px}.toggle{width:42px;height:42px;border-radius:14px;border:1px solid #d7b595;background:#fffaf4;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:18px;color:#8d5b38;box-shadow:0 8px 18px rgba(115,88,64,.08);cursor:pointer}.mini{writing-mode:vertical-rl;transform:rotate(180deg);margin:20px auto 0;font-size:12px;color:#816b57;letter-spacing:.08em}.sidebar{border-right:1px solid #e6d8c7;background:linear-gradient(180deg,#f6ebdc 0%,#f1e4d3 100%);padding:18px 14px;transition:.22s ease;overflow:hidden}.card.collapsed .sidebar{padding-left:0;padding-right:0;border-right:none;opacity:0}.brand{font-size:16px;font-weight:700;margin-bottom:16px}.nav{display:flex;flex-direction:column;gap:8px}.nav a{text-decoration:none;padding:10px 12px;border-radius:12px;font-size:13px;color:#665848;background:rgba(255,255,255,.45);border:1px solid transparent}.nav a.active{background:#fffdfa;border-color:#d9b99a;color:#875734;font-weight:700}
+    .content{padding:20px;background:linear-gradient(180deg,#fffdfa 0%,#fcf7f0 100%)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.path{font-size:12px;color:var(--muted)}.state{padding:8px 10px;border-radius:999px;border:1px solid #e3c8aa;background:#fff5ea;color:#875734;font-size:12px}
+    section{border:1px solid #e7dacb;background:var(--paper);border-radius:18px;padding:16px;margin-bottom:14px}h2{margin:0 0 12px;font-size:17px}.summary{padding:14px;border-radius:14px;background:linear-gradient(90deg,#fff3e5 0%,#fff9f2 100%);border:1px solid #e8cbad;line-height:1.65;font-size:14px}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:start}.node{position:relative;border:1px solid #ead9c6;background:#fffdfa;border-radius:16px;padding:12px;min-height:170px}.node:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:999px;background:#fff4e7;border:1px solid #e4c7a7;display:flex;align-items:center;justify-content:center;color:#9a6038;font-weight:700}.step{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#8a745f;margin-bottom:6px}.node strong{display:block;margin-bottom:8px;font-size:14px}.tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;margin:0 6px 6px 0}.risk{background:#fff1ef;color:var(--risk)}.html-note{margin-top:12px;padding:12px 14px;border-radius:14px;background:#f7efe6;border:1px solid #e3d3bf;color:#604f41;line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <div>
+        <h1>after-code</h1>
+        <p>开发后先复盘 AI 踩了哪些坑、验证缺口在哪、图上哪里错判了。仅在用户明确调用 <code>after-code</code> 时启用。</p>
+      </div>
+      <div class="chip">preview</div>
+    </div>
+    <div class="shell">
+      <div class="topnote">
+        <div>
+          <strong>开发后业务与架构复盘卡</strong>
+          <span>目标不是业务作文，而是把错判点、漏验点、修正点钉在图上。</span>
+        </div>
+        <div class="chip">html/aftercode 输出</div>
+      </div>
+      <div class="card">
+        <aside class="rail">
+          <button class="toggle" id="sidebarToggle" type="button">☰</button>
+          <div class="mini">收起导航</div>
+        </aside>
+        <aside class="sidebar">
+          <div class="brand">after-code</div>
+          <nav class="nav">
+            <a class="active" href="#pitfalls">1. AI 踩坑总览</a>
+            <a href="#map">2. 架构图标错点</a>
+          </nav>
+        </aside>
+        <main class="content">
+          <div class="toolbar">
+            <div class="path">坑点优先 / 验证优先 / 图上标错点</div>
+            <div class="state">弱化业务复述，强化判断质量</div>
+          </div>
+          <section id="pitfalls">
+            <h2>1. AI 踩坑总览</h2>
+            <div class="summary">这次最关键的不是代码顺不顺，而是 AI 前期把问题过早当成前端展示问题，判断顺序错了。</div>
+          </section>
+          <section id="map">
+            <h2>2. 架构图：哪里踩坑，怎么修</h2>
+            <div class="flow">
+              <div class="node"><div class="step">Step 1</div><strong>用户发起支付</strong><span class="tag risk">入口不是根因</span></div>
+              <div class="node"><div class="step">Step 2</div><strong>前端状态 / 请求</strong><span class="tag risk">最先被错怀疑</span></div>
+              <div class="node"><div class="step">Step 3</div><strong>接口查询口径</strong><span class="tag risk">关键错判点</span></div>
+              <div class="node"><div class="step">Step 4</div><strong>后端状态流转</strong><span class="tag risk">根因高概率区</span></div>
+              <div class="node"><div class="step">Step 5</div><strong>数据库 / 最终状态</strong><span class="tag risk">验证补测点</span></div>
+            </div>
+            <div class="html-note">
+              输出文件固定放在：<strong>html/aftercode/</strong><br>
+              命名示例：<code>payment-status-sync-retro.html</code>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const card = document.querySelector('.card');
+      const btn = document.getElementById('sidebarToggle');
+      const label = document.querySelector('.mini');
+      if (!card || !btn || !label) return;
+      btn.addEventListener('click', function () {
+        const collapsed = card.classList.toggle('collapsed');
+        label.textContent = collapsed ? '展开导航' : '收起导航';
+      });
+    }());
+  </script>
+</body>
+</html>

@@ -24,10 +24,10 @@ description: Use only when the user explicitly invokes pre-code before fixing a 
 
 不要因为问题“看起来适合”就自动使用。
 
+适合：
 - 要改功能，但还没判断系统链路
 - 要修 bug，但还没判断根因层级
 - 需要先收敛风险边界、验收标准、最小下一步
-- 不想被长篇讲解打断节奏
 
 不要用在：
 - 用户没有明确点名 `pre-code`
@@ -41,6 +41,23 @@ description: Use only when the user explicitly invokes pre-code before fixing a 
 - 只有用户主动调用时才启用
 - 不允许 AI 根据语义相似、自行判断、或“觉得合适”而主动套用
 - 如果用户没点名，就按普通对话或普通开发流程处理
+
+## Output Location
+
+HTML 产物统一放到当前项目下的：
+
+```text
+html/precode/
+```
+
+规则：
+- 如果 `html/` 不存在，先创建
+- 如果 `html/precode/` 不存在，先创建
+- 文件名必须和当前问题切题，让人一眼就能看出主题
+
+命名示例：
+- `payment-status-sync-precheck.html`
+- `order-submit-timeout-analysis.html`
 
 ## Default Behavior
 
@@ -183,6 +200,7 @@ description: Use only when the user explicitly invokes pre-code before fixing a 
 6. 如果信息不够，先给推测链路，缺口标“待确认”。
 7. 补充区只列概念名，不展开。
 8. 输出使用 HTML 卡片格式。
+9. HTML 文件统一输出到 html/precode/，文件名必须和问题切题。
 
 我的需求/问题：
 【粘贴功能或 bug】

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pre-code preview</title>
+  <style>
+    :root{--bg:#f7f2ea;--paper:#fffdfa;--paper-2:#fcf6ee;--line:#dfd0be;--text:#2c241d;--muted:#6f665d;--risk:#8b4f4f;--shadow:0 20px 40px rgba(101,82,60,.10)}
+    *{box-sizing:border-box} body{margin:0;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:linear-gradient(180deg,#fcf8f2 0%,#f3ebdf 100%)}
+    .page{max-width:1400px;margin:0 auto;padding:28px}.hero{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;margin-bottom:18px}h1{margin:0 0 8px;font-size:30px}.hero p{margin:0;color:var(--muted);line-height:1.6;max-width:860px}.chip{padding:8px 12px;border-radius:999px;background:#fff4e8;border:1px solid #e6c7a8;color:#885431;font-size:13px;white-space:nowrap}
+    .canvas{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:rgba(255,253,250,.92)}.topnote{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px;background:linear-gradient(180deg,#fffdf9 0%,#fbf2e7 100%);border-bottom:1px solid #eadccb}.topnote strong{display:block;margin-bottom:4px;font-size:16px}.topnote span{color:var(--muted);font-size:13px}
+    .pre-dev-card{display:grid;grid-template-columns:90px 250px 1fr;min-height:980px}.pre-dev-card.collapsed{grid-template-columns:90px 0 1fr}.rail{border-right:1px solid #e6d8c7;background:linear-gradient(180deg,#f2e7d7 0%,#efe0cd 100%);padding:16px 12px}.toggle{width:42px;height:42px;border-radius:14px;border:1px solid #d7b595;background:#fffaf4;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:18px;color:#8d5b38;box-shadow:0 8px 18px rgba(115,88,64,.08);cursor:pointer}.mini{writing-mode:vertical-rl;transform:rotate(180deg);margin:20px auto 0;font-size:12px;color:#816b57;letter-spacing:.08em}
+    .sidebar{border-right:1px solid #e6d8c7;background:linear-gradient(180deg,#f6ebdc 0%,#f1e4d3 100%);padding:18px 14px;transition:.22s ease;overflow:hidden}.pre-dev-card.collapsed .sidebar{padding-left:0;padding-right:0;border-right:none;opacity:0}.brand{font-size:16px;font-weight:700;margin-bottom:16px}.nav{display:flex;flex-direction:column;gap:8px}.nav a{text-decoration:none;padding:11px 12px;border-radius:12px;font-size:13px;color:#665848;background:rgba(255,255,255,.45);border:1px solid transparent}.nav a.active{background:#fffdfa;border-color:#d9b99a;color:#875734;font-weight:700}
+    .content{padding:20px;background:linear-gradient(180deg,#fffdfa 0%,#fcf7f0 100%)}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.path{font-size:12px;color:var(--muted)}.state{padding:8px 10px;border-radius:999px;border:1px solid #e3c8aa;background:#fff5ea;color:#875734;font-size:12px}
+    section{border:1px solid #e7dacb;background:var(--paper);border-radius:18px;padding:16px;margin-bottom:14px}h2{margin:0 0 12px;font-size:17px}.summary{padding:14px;border-radius:14px;background:linear-gradient(90deg,#fff3e5 0%,#fff9f2 100%);border:1px solid #e8cbad;line-height:1.6;font-size:14px}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:start}.flow-node{position:relative;border:1px solid #ead9c6;background:#fffdfa;border-radius:16px;padding:12px;min-height:146px}.flow-node:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:999px;background:#fff4e7;border:1px solid #e4c7a7;display:flex;align-items:center;justify-content:center;color:#9a6038;font-weight:700}.flow-step{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#8a745f;margin-bottom:6px}.flow-node strong{display:block;margin-bottom:8px;font-size:14px}.risk{display:inline-block;margin:0 6px 6px 0;padding:4px 8px;border-radius:999px;background:#fff1ef;border:1px solid #e7c1bc;color:var(--risk);font-size:11px}.pending{display:inline-block;padding:2px 6px;border-radius:999px;background:#fff4e7;border:1px solid #ebcaa4;color:#9c6339;font-size:11px}
+    .html-note{margin-top:12px;padding:12px 14px;border-radius:14px;background:#f7efe6;border:1px solid #e3d3bf;color:#604f41;line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <div>
+        <h1>pre-code</h1>
+        <p>开发前先定方向。先看架构流，再看边界场景，再看业务目标。仅在用户明确调用 <code>pre-code</code> 时启用。</p>
+      </div>
+      <div class="chip">preview</div>
+    </div>
+    <div class="canvas">
+      <div class="topnote">
+        <div>
+          <strong>开发前业务与架构定向卡</strong>
+          <span>先知道系统怎么流，再知道边界在哪，最后再确认业务结果。</span>
+        </div>
+        <div class="chip">html/precode 输出</div>
+      </div>
+      <div class="pre-dev-card">
+        <aside class="rail">
+          <button class="toggle" id="sidebarToggle" type="button">☰</button>
+          <div class="mini">收起导航</div>
+        </aside>
+        <aside class="sidebar">
+          <div class="brand">pre-code</div>
+          <nav class="nav">
+            <a class="active" href="#summary">0. TL;DR 架构结论</a>
+            <a href="#flow">1. 业务流 / 数据流图</a>
+          </nav>
+        </aside>
+        <main class="content">
+          <div class="toolbar">
+            <div class="path">架构优先 / 流程图优先 / 动态边界场景</div>
+            <div class="state">适合：功能设计、复杂 bug、跨层联动</div>
+          </div>
+          <section id="summary">
+            <h2>0. TL;DR 架构结论</h2>
+            <div class="summary">先把问题放进完整链路：<strong>用户动作 -> 前端状态/请求 -> 接口入口 -> 后端处理 -> 数据落点 -> 展示输出</strong>。</div>
+          </section>
+          <section id="flow">
+            <h2>1. 业务流 / 数据流图</h2>
+            <div class="flow">
+              <div class="flow-node"><div class="flow-step">Step 1</div><strong>用户触发</strong>点击按钮、提交表单<div style="margin-top:10px"><span class="risk">重复点击</span></div></div>
+              <div class="flow-node"><div class="flow-step">Step 2</div><strong>前端状态 / 请求</strong>状态更新、请求发出<div style="margin-top:10px"><span class="risk">缓存脏数据</span></div></div>
+              <div class="flow-node"><div class="flow-step">Step 3</div><strong>接口入口</strong>参数校验、幂等键 <span class="pending">待确认</span></div>
+              <div class="flow-node"><div class="flow-step">Step 4</div><strong>后端处理</strong>状态流转、补偿逻辑 <span class="pending">待确认</span></div>
+              <div class="flow-node"><div class="flow-step">Step 5</div><strong>数据落点 / 输出</strong>落库、查询输出、最终展示<div style="margin-top:10px"><span class="risk">读写不一致</span></div></div>
+            </div>
+            <div class="html-note">
+              输出文件固定放在：<strong>html/precode/</strong><br>
+              命名示例：<code>payment-status-sync-precheck.html</code>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const card = document.querySelector('.pre-dev-card');
+      const btn = document.getElementById('sidebarToggle');
+      const label = document.querySelector('.mini');
+      if (!card || !btn || !label) return;
+      btn.addEventListener('click', function () {
+        const collapsed = card.classList.toggle('collapsed');
+        label.textContent = collapsed ? '展开导航' : '收起导航';
+      });
+    }());
+  </script>
+</body>
+</html>
