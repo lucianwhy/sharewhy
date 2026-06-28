@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>html-use preview</title>
+  <style>
+    :root {
+      --ivory: #faf9f5;
+      --slate: #141413;
+      --clay: #d97757;
+      --oat: #e3dacc;
+      --olive: #788c5d;
+      --gray-150: #f0eee6;
+      --gray-300: #d1cfc5;
+      --gray-500: #87867f;
+      --gray-700: #3d3d3a;
+      --serif: ui-serif, Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+      --sidebar-width: 286px;
+      --sidebar-collapsed: 84px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--gray-700);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      min-height: 100vh;
+      transition: grid-template-columns 0.22s ease;
+    }
+
+    .app-shell.is-collapsed {
+      grid-template-columns: var(--sidebar-collapsed) minmax(0, 1fr);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 16px 14px;
+      background: rgba(250, 249, 245, 0.96);
+      border-right: 1.5px solid var(--gray-300);
+      overflow: auto;
+    }
+
+    .brand {
+      padding: 10px 8px 18px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--oat);
+      color: var(--slate);
+      font-family: var(--mono);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--slate);
+    }
+
+    .brand-subtitle {
+      margin: 8px 0 0;
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .sidebar-toggle {
+      width: 100%;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--slate);
+      padding: 10px 12px;
+      cursor: pointer;
+      font: inherit;
+      margin-bottom: 16px;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 11px 12px;
+      border-radius: 10px;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      background: rgba(217, 119, 87, 0.08);
+      color: var(--clay);
+      outline: none;
+    }
+
+    .app-shell.is-collapsed .brand-copy,
+    .app-shell.is-collapsed .nav-label,
+    .app-shell.is-collapsed .toggle-label {
+      display: none;
+    }
+
+    .content {
+      padding: 46px 28px 80px;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .repo-line,
+    .eyebrow,
+    .path,
+    code,
+    pre {
+      font-family: var(--mono);
+    }
+
+    .repo-line {
+      color: var(--gray-500);
+      font-size: 12.5px;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow {
+      color: var(--olive);
+      font-size: 12px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      color: var(--slate);
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      line-height: 1.22;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--gray-700);
+    }
+
+    .summary {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--gray-150);
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1.5px solid var(--gray-300);
+      background: var(--oat);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .step-title {
+      margin-bottom: 6px;
+      font-family: var(--mono);
+      color: var(--slate);
+      font-size: 13px;
+    }
+
+    .file-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .file-list li + li {
+      margin-top: 12px;
+    }
+
+    .path {
+      display: block;
+      color: var(--slate);
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      word-break: break-all;
+    }
+
+    .desc {
+      color: var(--gray-500);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .app-shell,
+      .app-shell.is-collapsed {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+      }
+
+      .content {
+        padding: 22px 18px 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">HU</div>
+        <div class="brand-copy">
+          <p class="brand-title">html-use</p>
+          <p class="brand-subtitle">左侧可收缩导航 + 阅读型技术说明页风格。</p>
+        </div>
+      </div>
+      <button class="sidebar-toggle" type="button" id="sidebarToggle">
+        <span>≡</span>
+        <span class="toggle-label">收起导航</span>
+      </button>
+      <nav>
+        <a class="nav-link" href="#summary"><span class="nav-label">Summary</span></a>
+        <a class="nav-link" href="#walkthrough"><span class="nav-label">Walkthrough</span></a>
+        <a class="nav-link" href="#files"><span class="nav-label">Key Files</span></a>
+      </nav>
+    </aside>
+    <main class="content">
+      <div class="page">
+        <section id="summary">
+          <div class="repo-line">preview / html-use</div>
+          <div class="eyebrow">Reading-Oriented Layout</div>
+          <h1>把内容排成技术说明页，而不是后台卡片墙</h1>
+          <p class="summary">这个 preview 展示的不是业务内容，而是 `html-use` 的默认气质：暖白底、衬线标题、等宽路径、安静配色、左侧可收缩导航。适合总结、方案、复盘、代码理解页。</p>
+        </section>
+
+        <section class="panel" id="walkthrough">
+          <h2>Walkthrough Blocks</h2>
+          <div class="step">
+            <div class="badge">1</div>
+            <div>
+              <div class="step-title">summary / 先讲结论</div>
+              <p>开头先给一段总结，告诉读者这页到底想说明什么，不要让人自己猜重点。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="badge">2</div>
+            <div>
+              <div class="step-title">walkthrough / 再展开链路</div>
+              <p>如果是架构、流程、复盘，优先拆步骤写，而不是一大段散文。</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="badge">3</div>
+            <div>
+              <div class="step-title">key files / 最后给定位锚点</div>
+              <p>如果内容和代码或文档有关，用 `key files`、`gotchas`、`next step` 让读者快速继续行动。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="files">
+          <h2>Key Files</h2>
+          <ul class="file-list">
+            <li>
+              <span class="path">html/feature-scope-review.html</span>
+              <span class="desc">用户最终打开的 HTML 产物。</span>
+            </li>
+            <li>
+              <span class="path">skills/html-use/SKILL.md</span>
+              <span class="desc">约束输出目录、导航结构、默认风格和验证方式。</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script>
+    const shell = document.getElementById("appShell");
+    const toggle = document.getElementById("sidebarToggle");
+
+    toggle.addEventListener("click", () => {
+      const collapsed = shell.classList.toggle("is-collapsed");
+      toggle.querySelector(".toggle-label").textContent = collapsed ? "展开导航" : "收起导航";
+    });
+  </script>
+</body>
+</html>

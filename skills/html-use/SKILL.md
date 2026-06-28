@@ -1,30 +1,31 @@
 ---
 name: html-use
-description: Use when content should be delivered as a local HTML artifact instead of plain markdown, especially when it needs a collapsible left sidebar navigation and must be saved under the project's html directory
+description: Use when content should be delivered as a local HTML artifact instead of plain markdown, especially when it needs a collapsible left sidebar navigation, calm reading-oriented styling, and must be saved under the project's html directory
 ---
 
 # HTML Use
 
 ## Overview
 
-把信息整理成可直接打开的 HTML 成品，不停留在 Markdown。
+把内容做成可直接打开的 HTML 成品，不停留在聊天排版。
 
 核心原则：
-- 产物必须能本地直接打开
-- 左侧必须有可收缩导航栏
-- 文件统一落到项目目录下的 `html/`
+- 文件必须落到项目 `html/`
+- 页面必须有左侧可收缩导航
+- 样式要偏“安静、清晰、可长时间阅读”
+- 视觉重点服务信息结构，不做花哨装饰
 
 ## When to Use
 
 适合：
 - 用户明确要 `HTML` 展示
-- 输出内容较长，需要导航定位
-- 需要交付本地文件，而不是聊天里的临时排版
-- 需要给后续 skill 或项目沉淀一个可复用页面
+- 内容较长，需要导航定位
+- 需要交付本地文件而不是聊天临时文本
+- 需要把说明、总结、方案、复盘做成可复用页面
 
 不要用在：
-- 用户只要一段短回答
-- 用户明确要求 Markdown、纯文本、表格文本
+- 用户只要短回答
+- 用户明确要求 Markdown / 纯文本
 - 只是内部草稿，还不需要 HTML 成品
 
 ## Output Location
@@ -57,11 +58,41 @@ html/
 根结构建议：
 
 ```html
-<div class="app-shell">
+<div class="app-shell" id="appShell">
   <aside class="sidebar">...</aside>
   <main class="content">...</main>
 </div>
 ```
+
+## Visual Direction
+
+默认风格不是“产品后台蓝白卡片”，而是“阅读型技术说明页”：
+
+- 背景：暖白 / 米白
+- 标题：衬线字体，拉开层级
+- 正文：无衬线字体，保证长文易读
+- 路径 / 文件 / 代码：等宽字体
+- 强调色：陶土 / 橄榄 / 深灰，少量使用
+- 卡片与边框：轻，不要厚重投影堆叠
+
+目标感觉：
+- 像高质量技术备忘录
+- 像架构 walkthrough
+- 不像营销页
+- 不像花哨仪表盘
+
+## Recommended Information Blocks
+
+长内容优先拆成这些块，而不是一整页散文：
+
+- `header / summary`
+- `diagram / flow`
+- `step walkthrough`
+- `key files`
+- `gotchas / red flags`
+- `acceptance / next step`
+
+如果内容是总结类、方案类、复盘类，这套块结构优先于随意排版。
 
 ## Minimal Template
 
@@ -74,28 +105,37 @@ html/
   <title>页面标题</title>
   <style>
     :root {
-      --bg: #f7f8fc;
-      --panel: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #d9e1ec;
-      --accent: #2563eb;
-      --sidebar-width: 260px;
-      --sidebar-collapsed: 76px;
+      --ivory: #faf9f5;
+      --slate: #141413;
+      --clay: #d97757;
+      --oat: #e3dacc;
+      --olive: #788c5d;
+      --gray-150: #f0eee6;
+      --gray-300: #d1cfc5;
+      --gray-500: #87867f;
+      --gray-700: #3d3d3a;
+      --serif: ui-serif, Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+      --sidebar-width: 280px;
+      --sidebar-collapsed: 84px;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: var(--ivory);
+      color: var(--gray-700);
+      font-family: var(--sans);
     }
 
     .app-shell {
       display: grid;
       grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
       min-height: 100vh;
+      transition: grid-template-columns 0.2s ease;
     }
 
     .app-shell.is-collapsed {
@@ -106,33 +146,63 @@ html/
       position: sticky;
       top: 0;
       height: 100vh;
-      padding: 20px 14px;
-      background: var(--panel);
-      border-right: 1px solid var(--line);
+      padding: 18px 14px;
+      background: rgba(250, 249, 245, 0.94);
+      border-right: 1px solid var(--gray-300);
       overflow: auto;
     }
 
     .sidebar-toggle {
       width: 100%;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      border: 1px solid var(--gray-300);
+      background: #fff;
+      color: var(--slate);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
     }
 
     .nav-link {
       display: block;
       padding: 10px 12px;
-      color: var(--muted);
+      color: var(--gray-500);
       text-decoration: none;
       border-radius: 10px;
     }
 
     .nav-link:hover,
     .nav-link:focus-visible {
-      background: #eef4ff;
-      color: var(--accent);
+      color: var(--clay);
+      background: rgba(217, 119, 87, 0.08);
+      outline: none;
     }
 
     .content {
-      padding: 32px;
+      padding: 40px 28px 72px;
+      max-width: 1080px;
+      width: 100%;
+    }
+
+    h1, h2, h3 {
+      color: var(--slate);
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .eyebrow,
+    .meta,
+    code,
+    pre {
+      font-family: var(--mono);
+    }
+
+    .panel {
+      background: #fff;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 14px;
+      padding: 18px 20px;
     }
 
     @media (max-width: 900px) {
@@ -158,8 +228,13 @@ html/
       </nav>
     </aside>
     <main class="content">
-      <section id="section-1"><h1>部分 1</h1></section>
-      <section id="section-2"><h2>部分 2</h2></section>
+      <section id="section-1" class="panel">
+        <div class="eyebrow">Summary</div>
+        <h1>部分 1</h1>
+      </section>
+      <section id="section-2" class="panel">
+        <h2>部分 2</h2>
+      </section>
     </main>
   </div>
   <script>
@@ -177,13 +252,13 @@ html/
 
 ## Workflow
 
-1. 先确认输出主题
-2. 创建项目下的 `html/` 目录
-3. 生成主题明确的 HTML 文件名
-4. 按“左侧导航 + 右侧内容”结构组织页面
-5. 为每个导航项绑定锚点
-6. 加入收缩脚本
-7. 本地打开检查导航、滚动、收缩是否正常
+1. 确认输出主题
+2. 创建项目下 `html/`
+3. 起一个主题明确的文件名
+4. 先搭“左侧导航 + 右侧主内容”骨架
+5. 再填 `summary / steps / files / risks` 等信息块
+6. 加入导航收缩脚本
+7. 本地检查导航、滚动、收缩、窄屏阅读
 
 ## Quick Reference
 
@@ -191,15 +266,20 @@ html/
 - 内容区：右侧 `main`
 - 导航方式：锚点 `href="#section-id"`
 - 收缩状态：给外层容器切 `is-collapsed`
+- 标题：优先 serif
+- 正文：优先 sans
+- 路径 / 代码：优先 mono
 - 输出目录：项目 `html/`
 
 ## Common Mistakes
 
-- 只写内容，不做左侧导航
+- 只把 Markdown 搬进 HTML，不重做信息层次
+- 用蓝白后台卡片味太重，阅读感太差
 - 有导航栏，但不能收缩
 - 把 HTML 丢到别的目录
 - 文件名太泛，后续找不到
 - 页面只适配桌面，不处理窄屏
+- 视觉太花，盖过内容本身
 
 ## Verification
 
@@ -210,3 +290,5 @@ html/
 - 左侧导航点击可跳转
 - 导航栏可收起、可展开
 - 窄屏下内容不挤爆
+- 标题 / 正文 / 代码层次清楚
+- 页面整体更像“阅读型技术说明页”，不是营销页

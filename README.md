@@ -23,6 +23,7 @@ skills/
     preview.html
   html-use/
     SKILL.md
+    preview.html
 ```
 
 ## 输出约定
@@ -49,6 +50,7 @@ HTML 文件命名必须和主题切题，让人一眼看出内容用途，例如
 
 - [`pre-code preview`](./skills/pre-code/preview.html)
 - [`after-code preview`](./skills/after-code/preview.html)
+- [`html-use preview`](./skills/html-use/preview.html)
 
 ## Existing Files
 
