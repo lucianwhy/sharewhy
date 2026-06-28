@@ -1,6 +1,6 @@
 ---
 name: pre-code
-description: Use when about to fix a bug or build a feature and first need to locate architecture, map the flow, identify boundary scenarios, and define acceptance before writing code
+description: Use only when the user explicitly invokes pre-code before fixing a bug or building a feature and wants an architecture-first pre-dev orientation before writing code
 ---
 
 # Pre-Code
@@ -16,14 +16,31 @@ description: Use when about to fix a bug or build a feature and first need to lo
 
 ## When to Use
 
+只在用户明确调用时使用。
+
+- 用户明确说 `pre-code`
+- 用户明确说“调用 pre-code”
+- 用户明确要求进入这个 skill
+
+不要因为问题“看起来适合”就自动使用。
+
 - 要改功能，但还没判断系统链路
 - 要修 bug，但还没判断根因层级
 - 需要先收敛风险边界、验收标准、最小下一步
 - 不想被长篇讲解打断节奏
 
 不要用在：
+- 用户没有明确点名 `pre-code`
 - 用户明确要直接写代码
 - 问题已经定位完成，只差实现
+
+## Trigger Rule
+
+这是一个**显式触发 skill**。
+
+- 只有用户主动调用时才启用
+- 不允许 AI 根据语义相似、自行判断、或“觉得合适”而主动套用
+- 如果用户没点名，就按普通对话或普通开发流程处理
 
 ## Default Behavior
 
