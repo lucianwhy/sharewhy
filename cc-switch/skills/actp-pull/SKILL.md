@@ -1,6 +1,6 @@
 ---
 name: "actp-pull"
-description: "ACTP 团队开工前同步流程: 切到自己分支 → fetch → pull → 合并 origin/yra_dev → 输出本次拉取带来的变更摘要(改了哪些文件/谁改的/改了什么功能)。Invoke when 用户说开工/开始开发/拉取代码/同步代码/拉取最新/开工前,或 SourceTree/Cursor/Claude Code 中提到 pull/fetch/同步。"
+# 手动触发: 在 Claude Code / Cursor / Trae 中输入 /actp-pull 调用
 ---
 
 # actp-pull · ACTP 团队开工前同步

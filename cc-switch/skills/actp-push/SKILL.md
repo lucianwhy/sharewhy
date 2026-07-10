@@ -1,6 +1,6 @@
 ---
 name: "actp-push"
-description: "ACTP 团队推送前审查 + 推送: 二次 fetch → 检查本地分支和远程同名分支是否同步 → 落后则拉取到本地 → 输出本次 push 会改的代码摘要(改了哪些文件/改了什么) → 无冲突则 push → 有冲突则诊断冲突原因(双方各自实现什么功能导致冲突)并引导用户解决。Invoke when 用户说提交/推送/push/我要推送/推代码/提交代码/推上去,或 SourceTree/Cursor 上下文里提到 push/commit 按钮点击后流程。"
+# 手动触发: 在 Claude Code / Cursor / Trae 中输入 /actp-push 调用
 ---
 
 # actp-push · ACTP 团队推送前审查 + 推送
