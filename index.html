@@ -24,32 +24,26 @@
        浅色调主题：暖白 + 深墨字 + 一抹强调橙
        ===================================================== */
     :root {
-      --bg:     #faf7f2;   /* 暖白底 */
-      --bg2:    #f1ece2;   /* 次级面（卡片/引用） */
-      --bg3:    #ffffff;   /* 卡片正面 */
-      --ink:    #1f1d1a;   /* 主文字 */
-      --ink2:   #3a3733;   /* 副文字 */
-      --muted:  #7a736a;   /* 弱化文字 */
-      --rule:   #e3ddd0;   /* 分隔线 */
-      --accent: #d9602b;   /* 强调橙（暖色焦点） */
-      --accent2:#1e5f5b;   /* 深青（次强调） */
+      --bg:     #faf7f2;
+      --bg2:    #f1ece2;
+      --bg3:    #ffffff;
+      --ink:    #1f1d1a;
+      --ink2:   #3a3733;
+      --muted:  #7a736a;
+      --rule:   #e3ddd0;
+      --accent: #d9602b;
+      --accent2:#1e5f5b;
       --max:    920px;
       --radius: 14px;
       --shadow: 0 1px 2px rgba(31,29,26,.04), 0 8px 24px rgba(31,29,26,.06);
     }
 
-    /* =====================================================
-       基础
-       ===================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { padding: 0; }
     html { scroll-padding-top: 2rem; }
     a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
     a:hover { color: var(--accent); border-bottom-style: solid; }
 
-    /* =====================================================
-       左侧固定侧边栏导航
-       ===================================================== */
     .sidebar {
       position: fixed;
       top: 0; left: 0;
@@ -63,139 +57,38 @@
       z-index: 100;
       transition: transform .25s ease;
     }
-    .sidebar-brand {
-      padding: 0 1.5rem 1.2rem;
-      border-bottom: 1px solid var(--rule);
-      margin-bottom: 1rem;
-    }
-    .sidebar-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .sidebar-sub {
-      font-size: .75rem;
-      color: var(--muted);
-      margin-top: .2rem;
-      letter-spacing: .08em;
-    }
-    .sidebar-nav {
-      display: flex;
-      flex-direction: column;
-      gap: .15rem;
-      padding: 0 .8rem;
-      overflow-y: auto;
-    }
-    .sidebar-nav a {
-      display: block;
-      padding: .55rem .9rem;
-      border-radius: 8px;
-      color: var(--ink2);
-      border-bottom: none;
-      font-size: .9rem;
-      transition: background .15s, color .15s;
-    }
-    .sidebar-nav a:hover {
-      background: var(--bg2);
-      color: var(--ink);
-    }
-    .sidebar-nav a.active {
-      background: rgba(217,96,43,.1);
-      color: var(--accent);
-      font-weight: 600;
-    }
+    .sidebar-brand { padding: 0 1.5rem 1.2rem; border-bottom: 1px solid var(--rule); margin-bottom: 1rem; }
+    .sidebar-title { font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .sidebar-sub { font-size: .75rem; color: var(--muted); margin-top: .2rem; letter-spacing: .08em; }
+    .sidebar-nav { display: flex; flex-direction: column; gap: .15rem; padding: 0 .8rem; overflow-y: auto; }
+    .sidebar-nav a { display: block; padding: .55rem .9rem; border-radius: 8px; color: var(--ink2); border-bottom: none; font-size: .9rem; transition: background .15s, color .15s; }
+    .sidebar-nav a:hover { background: var(--bg2); color: var(--ink); }
+    .sidebar-nav a.active { background: rgba(217,96,43,.1); color: var(--accent); font-weight: 600; }
 
-    /* 收起/展开按钮 */
     .collapse-btn, .expand-btn {
-      width: 32px; height: 32px;
-      border-radius: 8px;
-      border: 1px solid var(--rule);
-      background: var(--bg3);
-      color: var(--ink);
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .15s, color .15s;
+      width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--rule); background: var(--bg3); color: var(--ink);
+      font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, color .15s;
     }
-    .collapse-btn:hover, .expand-btn:hover {
-      background: var(--bg2);
-      color: var(--accent);
-    }
-    .collapse-btn {
-      position: absolute;
-      top: 1rem; right: 1rem;
-    }
-    .expand-btn {
-      position: fixed;
-      top: 1rem; left: 1rem;
-      z-index: 99;
-      display: none;
-      box-shadow: var(--shadow);
-    }
-    .sidebar.collapsed + .expand-btn {
-      display: flex;
-    }
+    .collapse-btn:hover, .expand-btn:hover { background: var(--bg2); color: var(--accent); }
+    .collapse-btn { position: absolute; top: 1rem; right: 1rem; }
+    .expand-btn { position: fixed; top: 1rem; left: 1rem; z-index: 99; display: none; box-shadow: var(--shadow); }
+    .sidebar.collapsed + .expand-btn { display: flex; }
     .sidebar-toggle {
-      display: none;
-      position: fixed;
-      top: 1rem; left: 1rem;
-      width: 40px; height: 40px;
-      border-radius: 8px;
-      border: 1px solid var(--rule);
-      background: var(--bg3);
-      color: var(--ink);
-      font-size: 1.2rem;
-      cursor: pointer;
-      z-index: 101;
-      box-shadow: var(--shadow);
+      display: none; position: fixed; top: 1rem; left: 1rem; width: 40px; height: 40px; border-radius: 8px;
+      border: 1px solid var(--rule); background: var(--bg3); color: var(--ink); font-size: 1.2rem; cursor: pointer; z-index: 101; box-shadow: var(--shadow);
     }
-
-    /* 主内容区让出左侧空间 */
-    article.page {
-      margin-left: 220px;
-      max-width: none;
-      transition: margin-left .25s ease;
-    }
-    article.page.collapsed {
-      margin-left: 0;
-    }
-
-    /* 桌面端收起状态 */
-    .sidebar.collapsed {
-      transform: translateX(-100%);
-    }
+    article.page { margin-left: 220px; max-width: none; transition: margin-left .25s ease; }
+    article.page.collapsed { margin-left: 0; }
+    .sidebar.collapsed { transform: translateX(-100%); }
 
     @media (max-width: 900px) {
-      .sidebar {
-        transform: translateX(-100%);
-      }
-      .sidebar.open {
-        transform: translateX(0);
-      }
-      .sidebar.collapsed {
-        transform: translateX(-100%);
-      }
-      .collapse-btn {
-        display: none;
-      }
-      .expand-btn {
-        display: none;
-      }
-      .sidebar-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      article.page {
-        margin-left: 0;
-        padding-top: 3.5rem;
-      }
-      article.page.collapsed {
-        margin-left: 0;
-      }
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar.collapsed { transform: translateX(-100%); }
+      .collapse-btn, .expand-btn { display: none; }
+      .sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+      article.page { margin-left: 0; padding-top: 3.5rem; }
+      article.page.collapsed { margin-left: 0; }
     }
     h1, h2, h3, h4 { line-height: 1.3; color: var(--ink); font-weight: 700; }
     h2 { font-size: 1.65rem; margin: 0 0 1rem; letter-spacing: 0.01em; }
@@ -204,524 +97,112 @@
     ul, ol { margin: 0 0 1rem 1.4rem; color: var(--ink2); }
     li { margin-bottom: .35rem; }
     hr { border: 0; height: 1px; background: var(--rule); margin: 2.5rem 0; }
-
     article.page { max-width: var(--max); margin: 0 auto; padding: 0 1.2rem; }
 
-    /* =====================================================
-       顶部条
-       ===================================================== */
-    .topbar {
-      background: var(--bg2);
-      border-bottom: 1px solid var(--rule);
-      padding: .8rem 1.2rem;
-      font-size: .85rem;
-      color: var(--muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-    .topbar .pill {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 999px;
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      color: var(--ink2);
-      font-size: .78rem;
-    }
+    .topbar { background: var(--bg2); border-bottom: 1px solid var(--rule); padding: .8rem 1.2rem; font-size: .85rem; color: var(--muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+    .topbar .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--bg3); border: 1px solid var(--rule); color: var(--ink2); font-size: .78rem; }
 
-    /* =====================================================
-       Hero
-       ===================================================== */
-    .hero {
-      padding: 4rem 0 3rem;
-      text-align: left;
-      border-bottom: 1px solid var(--rule);
-    }
-    .hero .kicker {
-      display: inline-block;
-      font-size: .8rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      border-left: 3px solid var(--accent);
-      padding-left: .7rem;
-    }
-    .hero h1 {
-      font-size: clamp(1.8rem, 4.5vw, 2.7rem);
-      line-height: 1.25;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.01em;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-      background: linear-gradient(transparent 62%, rgba(217,96,43,.18) 62%);
-      padding: 0 4px;
-    }
-    .hero .lede {
-      font-size: 1.08rem;
-      color: var(--ink2);
-      max-width: 680px;
-      margin-bottom: 1.5rem;
-    }
-    .hero-meta {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      font-size: .85rem;
-      color: var(--muted);
-    }
+    .hero { padding: 4rem 0 3rem; text-align: left; border-bottom: 1px solid var(--rule); }
+    .hero .kicker { display: inline-block; font-size: .8rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: .7rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.7rem); line-height: 1.25; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    .hero h1 em { font-style: normal; color: var(--accent); background: linear-gradient(transparent 62%, rgba(217,96,43,.18) 62%); padding: 0 4px; }
+    .hero .lede { font-size: 1.08rem; color: var(--ink2); max-width: 680px; margin-bottom: 1.5rem; }
+    .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .85rem; color: var(--muted); }
     .hero-meta strong { color: var(--ink); font-weight: 600; }
+    .scroll-hint { display: block; text-align: center; margin: 2.5rem 0 0; color: var(--muted); font-size: .8rem; letter-spacing: .2em; animation: bounce 2.2s ease-in-out infinite; }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-    .scroll-hint {
-      display: block;
-      text-align: center;
-      margin: 2.5rem 0 0;
-      color: var(--muted);
-      font-size: .8rem;
-      letter-spacing: .2em;
-      animation: bounce 2.2s ease-in-out infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-
-    /* =====================================================
-       章节通用
-       ===================================================== */
-    section.chapter {
-      padding: 3rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
+    section.chapter { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
     section.chapter:last-of-type { border-bottom: 0; }
-    .chapter-num {
-      display: inline-block;
-      font-family: "JetBrains Mono", Consolas, monospace;
-      color: var(--accent);
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .2em;
-      margin-bottom: .5rem;
-    }
-    .chapter h2 {
-      position: relative;
-      padding-bottom: .7rem;
-      margin-bottom: 1.5rem;
-    }
-    .chapter h2::after {
-      content: "";
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 48px; height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
+    .chapter-num { display: inline-block; font-family: "JetBrains Mono", Consolas, monospace; color: var(--accent); font-size: .8rem; font-weight: 700; letter-spacing: .2em; margin-bottom: .5rem; }
+    .chapter h2 { position: relative; padding-bottom: .7rem; margin-bottom: 1.5rem; }
+    .chapter h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 48px; height: 3px; background: var(--accent); border-radius: 2px; }
 
-    /* =====================================================
-       痛点共鸣卡片
-       ===================================================== */
-    .pains, .tips {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .pain, .tip {
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.1rem 1rem;
-    }
-    .tip {
-      border-left: 3px solid var(--accent2);
-    }
-    .pain .emoji, .tip .emoji {
-      font-size: 1.3rem;
-      display: inline-block;
-      margin-bottom: .5rem;
-    }
+    .pains, .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .pain, .tip { background: var(--bg3); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.1rem 1.1rem 1rem; }
+    .tip { border-left: 3px solid var(--accent2); }
+    .pain .emoji, .tip .emoji { font-size: 1.3rem; display: inline-block; margin-bottom: .5rem; }
     .pain h3, .tip h3 { font-size: 1rem; margin-bottom: .35rem; }
     .pain p, .tip p { font-size: .88rem; color: var(--muted); margin: 0; }
 
-    /* =====================================================
-       场景卡（三关卡）
-       ===================================================== */
     .scenarios { display: flex; flex-direction: column; gap: 1.5rem; }
-    .scenario {
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.5rem;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .scenario::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: var(--accent);
-    }
-    .scenario .tag {
-      display: inline-block;
-      font-size: .72rem;
-      letter-spacing: .15em;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(217,96,43,.1);
-      padding: 3px 10px;
-      border-radius: 999px;
-      margin-bottom: .8rem;
-    }
+    .scenario { background: var(--bg3); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.6rem 1.5rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .scenario::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
+    .scenario .tag { display: inline-block; font-size: .72rem; letter-spacing: .15em; font-weight: 700; color: var(--accent); background: rgba(217,96,43,.1); padding: 3px 10px; border-radius: 999px; margin-bottom: .8rem; }
     .scenario h3 { font-size: 1.25rem; margin-bottom: .6rem; }
     .scenario p.lead { font-size: .98rem; margin-bottom: 1rem; }
 
-    .vs {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1rem;
-      align-items: center;
-      margin: 1rem 0;
-    }
-    .vs .col {
-      background: var(--bg2);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-      font-size: .9rem;
-    }
+    .vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin: 1rem 0; }
+    .vs .col { background: var(--bg2); border-radius: 10px; padding: .9rem 1rem; font-size: .9rem; }
     .vs .col.bad { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(122,115,106,.5); }
     .vs .col.good { background: rgba(30,95,91,.08); color: var(--accent2); font-weight: 600; }
-    .vs .arrow {
-      font-size: 1.4rem;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .vs .col .label {
-      display: block;
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      margin-bottom: .35rem;
-      color: var(--muted);
-    }
+    .vs .arrow { font-size: 1.4rem; color: var(--accent); font-weight: 700; }
+    .vs .col .label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .35rem; color: var(--muted); }
     .vs .col.good .label { color: var(--accent2); }
 
-    /* 终端代码块 */
-    .terminal {
-      background: #2a2622;
-      color: #f3ece0;
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      font-size: .82rem;
-      line-height: 1.65;
-      overflow-x: auto;
-      margin: 1rem 0 0;
-    }
+    .terminal { background: #2a2622; color: #f3ece0; border-radius: 10px; padding: 1rem 1.1rem; font-size: .82rem; line-height: 1.65; overflow-x: auto; margin: 1rem 0 0; }
     .terminal .prompt { color: #d9602b; }
     .terminal .comment { color: #8a8278; }
     .terminal .ok { color: #6fc89e; }
     .terminal .hl { color: #f5c97c; }
-    .terminal .cursor {
-      display: inline-block;
-      width: 8px; height: 1.05em;
-      background: #f3ece0;
-      vertical-align: text-bottom;
-      animation: blink 1.1s steps(2) infinite;
-    }
+    .terminal .cursor { display: inline-block; width: 8px; height: 1.05em; background: #f3ece0; vertical-align: text-bottom; animation: blink 1.1s steps(2) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
 
-    /* =====================================================
-       横评表
-       ===================================================== */
-    .table-wrap {
-      overflow-x: auto;
-      overflow-y: auto;
-      max-height: 600px;
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      background: var(--bg3);
-    }
-    .table-wrap table {
-      width: 100%;
-      min-width: 640px;
-      border-collapse: collapse;
-      font-size: .9rem;
-    }
-    .table-wrap th, .table-wrap td {
-      padding: .75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--rule);
-      vertical-align: top;
-    }
-    .table-wrap thead th {
-      background: var(--bg2);
-      font-size: .8rem;
-      letter-spacing: .05em;
-      color: var(--muted);
-      font-weight: 700;
-      text-transform: uppercase;
-    }
+    .table-wrap { overflow-x: auto; overflow-y: auto; max-height: 600px; border: 1px solid var(--rule); border-radius: 10px; background: var(--bg3); }
+    .table-wrap table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: .9rem; }
+    .table-wrap th, .table-wrap td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .table-wrap thead th { background: var(--bg2); font-size: .8rem; letter-spacing: .05em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
     .table-wrap tbody tr:last-child td { border-bottom: 0; }
     .table-wrap .tool { font-weight: 700; color: var(--ink); }
     .table-wrap .vendor { color: var(--muted); font-size: .82rem; }
     .table-wrap .price { color: var(--accent2); font-weight: 600; }
+    .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; font-size: .82rem; color: var(--muted); }
+    .legend span::before { content: "■"; color: var(--accent); margin-right: .35rem; }
 
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-      font-size: .82rem;
-      color: var(--muted);
-    }
-    .legend span::before {
-      content: "■";
-      color: var(--accent);
-      margin-right: .35rem;
-    }
-
-    /* 工具分享列表 */
-    .tool-list {
-      list-style: none;
-      margin: 1rem 0 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: .8rem;
-    }
-    .tool-list li {
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      padding: .9rem 1.1rem;
-      margin: 0;
-    }
-    .tool-list li a {
-      color: var(--ink);
-      border-bottom: 1px dashed var(--accent);
-      font-size: 1rem;
-    }
+    .tool-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: .8rem; }
+    .tool-list li { background: var(--bg3); border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 10px; padding: .9rem 1.1rem; margin: 0; }
+    .tool-list li a { color: var(--ink); border-bottom: 1px dashed var(--accent); font-size: 1rem; }
     .tool-list li a:hover { color: var(--accent); }
-    .tool-list .tool-url {
-      font-family: "JetBrains Mono", Consolas, monospace;
-      color: var(--muted);
-      font-size: .8rem;
-      margin: .25rem 0 .5rem;
-    }
-    .tool-list .tool-desc {
-      font-size: .85rem;
-      color: var(--ink2);
-      line-height: 1.6;
-      margin: 0;
-    }
+    .tool-list .tool-url { font-family: "JetBrains Mono", Consolas, monospace; color: var(--muted); font-size: .8rem; margin: .25rem 0 .5rem; }
+    .tool-list .tool-desc { font-size: .85rem; color: var(--ink2); line-height: 1.6; margin: 0; }
 
-    /* =====================================================
-       AI 写代码技巧（Q&A）
-       ===================================================== */
-    .qa {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-      margin-top: 1rem;
-    }
-    .qa-item {
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent);
-      border-radius: 10px;
-      padding: 1.1rem 1.3rem;
-    }
-    .qa-item h3 {
-      font-size: 1.02rem;
-      margin-bottom: .5rem;
-      color: var(--ink);
-    }
-    .qa-item p {
-      font-size: .92rem;
-      color: var(--ink2);
-      margin: 0 0 .6rem;
-    }
+    .qa { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1rem; }
+    .qa-item { background: var(--bg3); border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 10px; padding: 1.1rem 1.3rem; }
+    .qa-item h3 { font-size: 1.02rem; margin-bottom: .5rem; color: var(--ink); }
+    .qa-item p { font-size: .92rem; color: var(--ink2); margin: 0 0 .6rem; }
     .qa-item p:last-child { margin-bottom: 0; }
-    .qa-item code {
-      background: var(--bg2);
-      padding: 1px 6px;
-      border-radius: 3px;
-      font-size: .85rem;
-      color: var(--accent);
-    }
+    .qa-item code { background: var(--bg2); padding: 1px 6px; border-radius: 3px; font-size: .85rem; color: var(--accent); }
 
-    /* =====================================================
-       视频演示卡片
-       ===================================================== */
-    .video-demo {
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.5rem;
-      margin: 1.5rem 0;
-      box-shadow: var(--shadow);
-    }
-    .video-demo h3 {
-      margin-bottom: .6rem;
-    }
-    .video-demo video {
-      width: 100%;
-      max-width: 420px;
-      max-height: 560px;
-      border-radius: 10px;
-      background: #000;
-      display: block;
-      margin: 0 auto;
-    }
-    .video-note {
-      font-size: .88rem;
-      color: var(--muted);
-      margin-top: .8rem;
-    }
-    .video-tools {
-      display: flex;
-      gap: .6rem;
-      flex-wrap: wrap;
-      margin-top: .8rem;
-    }
-    .video-tools span {
-      background: var(--bg2);
-      border: 1px solid var(--rule);
-      border-radius: 999px;
-      padding: 3px 10px;
-      font-size: .78rem;
-      color: var(--ink2);
-    }
+    .video-demo { background: var(--bg3); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.4rem 1.5rem; margin: 1.5rem 0; box-shadow: var(--shadow); }
+    .video-demo h3 { margin-bottom: .6rem; }
+    .video-demo video { width: 100%; max-width: 420px; max-height: 560px; border-radius: 10px; background: #000; display: block; margin: 0 auto; }
+    .video-note { font-size: .88rem; color: var(--muted); margin-top: .8rem; }
+    .video-tools { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .8rem; }
+    .video-tools span { background: var(--bg2); border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; font-size: .78rem; color: var(--ink2); }
 
-    /* =====================================================
-       3 分钟复刻清单
-       ===================================================== */
-    .checklist {
-      list-style: none;
-      counter-reset: step;
-      margin: 1rem 0 0;
-      padding: 0;
-    }
-    .checklist li {
-      counter-increment: step;
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      padding: 1rem 1.1rem 1rem 3.4rem;
-      position: relative;
-      margin-bottom: .7rem;
-      font-size: .95rem;
-    }
-    .checklist li::before {
-      content: counter(step);
-      position: absolute;
-      left: 1rem; top: 50%;
-      transform: translateY(-50%);
-      width: 1.8rem; height: 1.8rem;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      font-size: .9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "JetBrains Mono", Consolas, monospace;
-    }
+    .checklist { list-style: none; counter-reset: step; margin: 1rem 0 0; padding: 0; }
+    .checklist li { counter-increment: step; background: var(--bg3); border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem 1rem 3.4rem; position: relative; margin-bottom: .7rem; font-size: .95rem; }
+    .checklist li::before { content: counter(step); position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", Consolas, monospace; }
     .checklist li strong { color: var(--ink); }
     .checklist li small { color: var(--muted); display: block; margin-top: .15rem; font-size: .82rem; }
 
-    /* =====================================================
-       底部转化：二维码 + 群号
-       ===================================================== */
-    .cta {
-      background: linear-gradient(135deg, var(--bg2) 0%, #ede4d3 100%);
-      border-radius: var(--radius);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      margin: 1.5rem 0;
-    }
-    .cta h2 {
-      font-size: 1.4rem;
-      margin-bottom: .4rem;
-    }
+    .cta { background: linear-gradient(135deg, var(--bg2) 0%, #ede4d3 100%); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; margin: 1.5rem 0; }
+    .cta h2 { font-size: 1.4rem; margin-bottom: .4rem; }
     .cta h2::after { display: none; }
     .cta p.cta-sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.5rem; }
-
-    .qr-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .qr-box {
-      background: #fff;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid var(--rule);
-      box-shadow: var(--shadow);
-    }
+    .qr-row { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .qr-box { background: #fff; padding: 12px; border-radius: 12px; border: 1px solid var(--rule); box-shadow: var(--shadow); }
     .qr-box img { width: 180px; height: 180px; display: block; }
     .qr-info { text-align: left; font-size: .9rem; color: var(--ink2); }
-    .qr-info .group-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: .35rem;
-    }
-    .qr-info .group-id {
-      font-family: "JetBrains Mono", Consolas, monospace;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 1rem;
-      background: rgba(217,96,43,.08);
-      padding: 2px 8px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: .5rem;
-    }
+    .qr-info .group-name { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: .35rem; }
+    .qr-info .group-id { font-family: "JetBrains Mono", Consolas, monospace; color: var(--accent); font-weight: 600; font-size: 1rem; background: rgba(217,96,43,.08); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: .5rem; }
     .qr-info .expire { color: var(--muted); font-size: .78rem; }
     .qr-info .desc { margin-top: .8rem; font-size: .85rem; line-height: 1.6; }
 
-    /* =====================================================
-       关键句高亮
-       ===================================================== */
-    mark.key {
-      background: rgba(217,96,43,.12);
-      color: var(--accent);
-      font-weight: 600;
-      padding: 0 3px;
-      border-radius: 3px;
-    }
+    mark.key { background: rgba(217,96,43,.12); color: var(--accent); font-weight: 600; padding: 0 3px; border-radius: 3px; }
+    footer { padding: 2rem 0 3rem; text-align: center; color: var(--muted); font-size: .82rem; }
+    footer .links a { color: var(--ink2); border-bottom: 1px solid var(--rule); margin: 0 .5rem; }
 
-    /* =====================================================
-       页脚
-       ===================================================== */
-    footer {
-      padding: 2rem 0 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: .82rem;
-    }
-    footer .links a {
-      color: var(--ink2);
-      border-bottom: 1px solid var(--rule);
-      margin: 0 .5rem;
-    }
-
-    /* =====================================================
-       移动端
-       ===================================================== */
     @media (max-width: 640px) {
       .vs { grid-template-columns: 1fr; }
       .vs .arrow { transform: rotate(90deg); justify-self: center; }
@@ -729,17 +210,10 @@
       .topbar { font-size: .78rem; }
       .qr-info { text-align: center; }
     }
-
-    /* 打印 */
-    @media print {
-      .topbar, .scroll-hint, .qr-row img { display: none; }
-      body { background: #fff; }
-    }
+    @media print { .topbar, .scroll-hint, .qr-row img { display: none; } body { background: #fff; } }
   </style>
 </head>
 <body>
-
-  <!-- ============================ 侧边栏导航 ============================ -->
   <aside class="sidebar" id="sidebar">
     <button class="collapse-btn" id="collapseBtn" aria-label="收起导航">←</button>
     <div class="sidebar-brand">
@@ -749,20 +223,19 @@
     <nav class="sidebar-nav">
       <a href="#hero" class="nav-link active">首页</a>
       <a href="#sec-pain" class="nav-link">00 / 共鸣</a>
-      <a href="#sec-vm" class="nav-link">01 / 学业</a>
-      <a href="#sec-final" class="nav-link">02 / 期末</a>
-      <a href="#sec-tools" class="nav-link">03 / 工具</a>
-      <a href="#sec-tips" class="nav-link">04 / 写码技巧</a>
-      <a href="#sec-more" class="nav-link">05 / 其他</a>
-      <a href="#sec-cta" class="nav-link">06 / 收尾</a>
+      <a href="#sec-secretary" class="nav-link">01 / AI 秘书</a>
+      <a href="#sec-vm" class="nav-link">02 / 学业</a>
+      <a href="#sec-final" class="nav-link">03 / 期末</a>
+      <a href="#sec-tools" class="nav-link">04 / 工具</a>
+      <a href="#sec-tips" class="nav-link">05 / 写码技巧</a>
+      <a href="#sec-more" class="nav-link">06 / 其他</a>
+      <a href="#sec-cta" class="nav-link">07 / 收尾</a>
     </nav>
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换导航">☰</button>
   </aside>
   <button class="expand-btn" id="expandBtn" aria-label="展开导航">→</button>
 
   <article class="page" id="page">
-
-    <!-- ============================ HERO ============================ -->
     <header class="hero" id="hero">
       <span class="kicker">大学生 AI 提效手册</span>
       <h1>三小时搞定实训，一晚上搞定期末复习，<br>你<em>还没用上</em>这些 AI 技巧嘛？</h1>
@@ -774,65 +247,97 @@
       <div class="scroll-hint">▼ 向下滚动</div>
     </header>
 
-    <!-- ============================ 痛点共鸣 ============================ -->
     <section class="chapter" id="sec-pain">
       <span class="chapter-num">00 / 共鸣</span>
       <h2>先看看你是不是也这样</h2>
       <p>以下场景，每个都对应一种 AI 解法——我后面会逐个演示。</p>
-
       <div class="pains">
-        <div class="pain">
-          <span class="emoji">🖥️</span>
-          <h3>实训要装 Linux 虚机</h3>
-          <p>搜 5 篇教程、敲 30 行命令、配 SSH 配半天，最后卡在某一步。</p>
-        </div>
-        <div class="pain">
-          <span class="emoji">📖</span>
-          <h3>期末复习找不到重点</h3>
-          <p>笔记厚厚一沓，不知道考什么；找题找不到，要答案找不到解析。</p>
-        </div>
-        <div class="pain">
-          <span class="emoji">💸</span>
-          <h3>想用 AI 但怕贵</h3>
-          <p>Cursor 订阅太贵、GPT 会员要翻墙，听同学说这家强那家更强但没空研究。</p>
-        </div>
-        <div class="pain">
-          <span class="emoji">🧩</span>
-          <h3>装了三个客户端来回切</h3>
-          <p>Trae 写注释、Qoder 跑项目、Claude 拍板，桌面一团乱。</p>
+        <div class="pain"><span class="emoji">🖥️</span><h3>实训要装 Linux 虚机</h3><p>搜 5 篇教程、敲 30 行命令、配 SSH 配半天，最后卡在某一步。</p></div>
+        <div class="pain"><span class="emoji">📖</span><h3>期末复习找不到重点</h3><p>笔记厚厚一沓，不知道考什么；找题找不到，要答案找不到解析。</p></div>
+        <div class="pain"><span class="emoji">💸</span><h3>想用 AI 但怕贵</h3><p>Cursor 订阅太贵、GPT 会员要翻墙，听同学说这家强那家更强但没空研究。</p></div>
+        <div class="pain"><span class="emoji">🧩</span><h3>装了三个客户端来回切</h3><p>Trae 写注释、Qoder 跑项目、Claude 拍板，桌面一团乱。</p></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-secretary">
+      <span class="chapter-num">01 / AI 秘书</span>
+      <h2>别只拿 ChatGPT 问问题：把它变成你的 AI 秘书</h2>
+      <p class="lede">
+        很多人用 ChatGPT 的方式还是“问一句、答一句”。再往前一步，可以让它<mark class="key">长期知道你在做什么</mark>，
+        再连接待办、日历、文件和代码仓库，让 AI 从“聊天工具”变成一个真正参与你日常工作的秘书。
+      </p>
+
+      <div class="scenarios">
+        <div class="scenario">
+          <span class="tag">核心变化</span>
+          <h3>普通 ChatGPT vs AI 秘书</h3>
+          <div class="vs">
+            <div class="col bad">
+              <span class="label">普通用法</span>
+              “帮我写一下” → “这个知识点是什么意思？” → 每次重新交代背景
+            </div>
+            <div class="arrow">→</div>
+            <div class="col good">
+              <span class="label">AI 秘书</span>
+              知道你的目标和项目 → 查你的资料 → 记任务 → 排优先级 → 直接调用工具执行
+            </div>
+          </div>
+
+          <h3 style="margin-top:1.5rem">AI 秘书的 4 层能力</h3>
+          <ol>
+            <li><strong>记住你</strong>：通过 Memory、项目上下文等，知道你的长期目标、偏好和正在推进的事情。</li>
+            <li><strong>管理事情</strong>：连接 TickTick、Google Calendar 等工具后，可以查待办、记任务、安排时间。</li>
+            <li><strong>读取资料</strong>：连接 Google Drive、Gmail、GitHub 等应用后，直接从真实资料里找上下文，不用反复复制粘贴。</li>
+            <li><strong>帮你执行</strong>：不止给建议，而是把“理解 → 查信息 → 做决定 → 写入外部工具”串成一个完整流程。</li>
+          </ol>
+
+          <h3 style="margin-top:1.5rem">现场演示：一句话触发一整套工作流</h3>
+          <pre class="terminal"><span class="comment"># 你只说一句</span>
+<span class="hl">“明天下午我要给学弟做一个 AI 分享，4 点开始。
+你先帮我记一下，然后看看我之前做过什么分享，
+再告诉我今晚最应该先准备什么。”</span>
+
+<span class="comment"># AI 秘书背后做的事情</span>
+<span class="ok">理解时间和目标 → 写进待办 → 找以前的项目/资料 → 判断优先级 → 给出下一步</span></pre>
+
+          <h3 style="margin-top:1.5rem">你可以直接这样用</h3>
+          <ul>
+            <li>“记一下，我明天下午要交作业。”</li>
+            <li>“看看我今天还有哪些事情没完成，挑出最重要的 3 件。”</li>
+            <li>“明天下午 6 点和朋友吃饭，放进日历。”</li>
+            <li>“我之前跟你说过的那个项目，现在进行到哪一步了？”</li>
+            <li>“去我的 Google Drive 找资料，再结合待办告诉我下一步做什么。”</li>
+          </ul>
+
+          <p style="margin-top:1rem">
+            <strong>一句话总结：</strong><mark class="key">AI 秘书不是一个新的 AI 产品，而是一种使用 ChatGPT 的方式：</mark>
+            让它长期知道你在干什么，再给它连接真实工具。
+          </p>
+          <p>
+            ChatGPT 像<strong>大脑</strong>，Memory / 上下文像<strong>记忆</strong>，TickTick / Calendar / Drive / GitHub 是<strong>外部系统</strong>，
+            插件和 MCP 则像把这些系统接起来的<strong>手和脚</strong>。
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ============================ 第一关：装虚机 ============================ -->
     <section class="chapter" id="sec-vm">
-      <span class="chapter-num">01 / 学业</span>
+      <span class="chapter-num">02 / 学业</span>
       <h2>三小时搞定实训：用 Agent 接管一台 Linux 虚机</h2>
-      <p class="lede">
-        实训第一课通常要配 Linux 环境。传统做法是<mark class="key">手敲命令 + 踩坑</mark>，
-        我用 Agent 把这件事压缩成<mark class="key">一段提示词 + 一次执行</mark>。
-      </p>
-
+      <p class="lede">实训第一课通常要配 Linux 环境。传统做法是<mark class="key">手敲命令 + 踩坑</mark>，我用 Agent 把这件事压缩成<mark class="key">一段提示词 + 一次执行</mark>。</p>
       <div class="scenarios">
         <div class="scenario">
           <span class="tag">场景对比</span>
           <h3>传统流程 vs Agent 流程</h3>
           <div class="vs">
-            <div class="col bad">
-              <span class="label">传统</span>
-              搜 5 篇博客 → 抄 30 行命令 → SSH 配错三次 → 重装 vmtools → 折腾两小时
-            </div>
+            <div class="col bad"><span class="label">传统</span>搜 5 篇博客 → 抄 30 行命令 → SSH 配错三次 → 重装 vmtools → 折腾两小时</div>
             <div class="arrow">→</div>
-            <div class="col good">
-              <span class="label">Agent</span>
-              把需求写进一段提示词，让 AI 自己通过 tmux 接管虚机
-            </div>
+            <div class="col good"><span class="label">Agent</span>把需求写进一段提示词，让 AI 自己通过 tmux 接管虚机</div>
           </div>
 
           <h3 style="margin-top:1.5rem">第一步：在虚拟机里开启 SSH（5 条命令 + 1 条查看）</h3>
           <p>提示词能跑的前提，是虚机能被 SSH 访问。先在虚机里执行下面这段：</p>
-          <pre class="terminal">
-<span class="prompt">$</span> <span class="hl">sudo yum install -y openssh-server</span>      <span class="comment"># 1. 安装 SSH 服务端</span>
+          <pre class="terminal"><span class="prompt">$</span> <span class="hl">sudo yum install -y openssh-server</span>      <span class="comment"># 1. 安装 SSH 服务端</span>
 <span class="prompt">$</span> <span class="hl">sudo systemctl enable sshd</span>             <span class="comment"># 2. 设为开机自启</span>
 <span class="prompt">$</span> <span class="hl">sudo systemctl start sshd</span>              <span class="comment"># 3. 立即启动</span>
 <span class="prompt">$</span> <span class="hl">sudo firewall-cmd --permanent --add-service=ssh</span>  <span class="comment"># 4. 防火墙放行 SSH</span>
@@ -842,33 +347,25 @@
           <h3 style="margin-top:1.2rem">第二步：把这三样东西发给 Agent</h3>
           <p>在宿主机（Windows）这边，把以下信息贴给 AI，AI 就能从外面连进来：</p>
           <div class="table-wrap" style="margin-top:.5rem">
-            <table>
-              <thead>
-                <tr><th>字段</th><th>从哪来</th><th>干嘛用</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>虚拟机 IP</strong></td><td>刚才 <code>ip addr</code> 的输出里找</td><td>SSH 知道连哪台机器</td></tr>
-                <tr><td><strong>登录用户名</strong></td><td>虚机里 <code>whoami</code> 可见</td><td>SSH 登录账号</td></tr>
-                <tr><td><strong>登录密码</strong></td><td>虚机 root / 你的用户密码</td><td>SSH 登录凭证</td></tr>
-              </tbody>
-            </table>
+            <table><thead><tr><th>字段</th><th>从哪来</th><th>干嘛用</th></tr></thead><tbody>
+              <tr><td><strong>虚拟机 IP</strong></td><td>刚才 <code>ip addr</code> 的输出里找</td><td>SSH 知道连哪台机器</td></tr>
+              <tr><td><strong>登录用户名</strong></td><td>虚机里 <code>whoami</code> 可见</td><td>SSH 登录账号</td></tr>
+              <tr><td><strong>登录密码</strong></td><td>虚机 root / 你的用户密码</td><td>SSH 登录凭证</td></tr>
+            </tbody></table>
           </div>
 
           <h3 style="margin-top:1.5rem">第三步：Agent 是怎么连上你的虚机的（简略原理）</h3>
           <p>AI 本身<mark class="key">不能直接摸到你的虚机</mark>，它必须借助宿主机的 SSH 客户端当"跳板"。整条链路是 4 步：</p>
           <ol>
             <li><strong>你在宿主机开 PowerShell</strong>，AI 在你的本地 shell 里执行 <code>ssh 用户名@虚机IP</code>。</li>
-            <li><strong>SSH 走 22 端口</strong>，经你刚放行的防火墙，进到虚机里跑命令（这就是前面 5 条命令的意义）。</li>
-            <li><strong>AI 不会停在交互 shell</strong>——它会立刻在虚机里 <code>tmux new-session -d -s codex</code> 建一个<mark class="key">后台共享会话</mark>，之后所有操作都通过 <code>tmux send-keys</code> 投送到这个会话里。</li>
-            <li><strong>为什么用 tmux？</strong>因为 AI 跑任务可能跨分钟级甚至小时级，<code>ssh</code> 一断就全丢；tmux 会话<mark class="key">在后台常驻</mark>，哪怕 AI 这一轮思考结束，下一轮也能接着用。</li>
+            <li><strong>SSH 走 22 端口</strong>，经你刚放行的防火墙，进到虚机里跑命令。</li>
+            <li><strong>AI 不会停在交互 shell</strong>——它会立刻在虚机里 <code>tmux new-session -d -s codex</code> 建一个后台共享会话。</li>
+            <li><strong>为什么用 tmux？</strong>因为任务可能跨分钟级甚至小时级，SSH 一断也不影响后台会话继续存在。</li>
           </ol>
-          <p style="margin-top:.8rem">
-            <strong>一句话总结：</strong>你开 SSH = 给 AI 一扇门；你给 IP/账密 = 给 AI 钥匙；tmux = 给 AI 一张能挂着的工位，AI 走人也不掉线。
-          </p>
+          <p><strong>一句话总结：</strong>你开 SSH = 给 AI 一扇门；你给 IP/账密 = 给 AI 钥匙；tmux = 给 AI 一张能挂着的工位。</p>
 
           <h3 style="margin-top:1.5rem">提示词（我现场演示用的就是这一段）</h3>
-          <pre class="terminal">
-<span class="comment"># 演示用提示词 · 现场 90 秒可跑完</span>
+          <pre class="terminal"><span class="comment"># 演示用提示词 · 现场 90 秒可跑完</span>
 <span class="hl">用 SSH 连接 VMware 虚拟机。不要操作 VMware 图形界面，
 只能通过 Windows 宿主机里的 ssh 和虚拟机里的 tmux 工作。
 
@@ -886,251 +383,113 @@
 7. 不要做额外环境探测，不要打开 GUI
 
 完成标准：会话存在 + 中文已打印 + pane 已回读</span><span class="cursor"></span></pre>
-
           <h3 style="margin-top:1.2rem">为什么这段提示词能直接跑</h3>
           <ul>
-            <li><strong>边界清晰</strong>：明确告诉 AI <em>不能</em>做什么（不开 GUI、不做无关探测），避免跑飞。</li>
-            <li><strong>环境先验</strong>：把 SSH 别名、tmux 会话名这些"已知信息"写死，省去 AI 反复询问。</li>
-            <li><strong>完成标准</strong>：用"会话存在 + 中文已打印 + pane 已回读"三件套兜底，不靠感觉判断。</li>
-            <li><strong>中文容错</strong>：直接给 <code>printf '\u6211\u7ec8\u4e8e\u8fde\u4e0a\u865a\u62df\u673a\u4e86'</code> 这种转义方案，省去乱码排查时间。</li>
+            <li><strong>边界清晰</strong>：明确告诉 AI 不能做什么，避免跑飞。</li>
+            <li><strong>环境先验</strong>：把 SSH 别名、tmux 会话名等已知信息写死。</li>
+            <li><strong>完成标准</strong>：用“会话存在 + 中文已打印 + pane 已回读”兜底。</li>
+            <li><strong>中文容错</strong>：提前给出 Unicode 转义方案。</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============================ 第二关：期末复习 ============================ -->
     <section class="chapter" id="sec-final">
-      <span class="chapter-num">02 / 期末</span>
+      <span class="chapter-num">03 / 期末</span>
       <h2>一晚上搞定期末复习：让 AI 帮你出题 + 解析</h2>
-      <p class="lede">
-        期末最大的痛点是"不知道考什么"和"做了题没人讲"。开源社区有人已经做好了一个 <mark class="key">final-review</mark> Skill，
-        把这个流程封装成了一键调用。
-      </p>
-
-      <div class="scenarios">
-        <div class="scenario">
-          <span class="tag">实战链接</span>
-          <h3>final-review · 期末速通 Skill</h3>
-          <p>
-            <strong>仓库地址：</strong>
-            <a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">github.com/lucianwhy/final-review</a>
-            （开源，<strong>95 stars</strong>）
-          </p>
-          <p><strong>它能做什么：</strong></p>
-          <ul>
-            <li>丢一份课程 PPT / 教材 PDF 进去，<mark class="key">自动出题</mark>（选择 / 填空 / 简答）</li>
-            <li>每道题附带<mark class="key">答案 + 偏得分导向的解析</mark></li>
-            <li>支持按章节、按题型筛选，<strong>复习精准度比通读笔记高 3 倍</strong></li>
-            <li>所有题目基于你给的材料生成，<strong>不联网瞎编</strong></li>
-          </ul>
-          <p style="margin-top:1rem">
-            <strong>我的用法：</strong>考前一周，把老师 PPT + 作业题扔进去，让 AI 先出一份"高频考点清单"，
-            再针对每章出 10 道题 → 自己做 → 让 AI 批改并讲错题。一晚上能从 60 分水平提到 80+。
-          </p>
-        </div>
-      </div>
+      <p class="lede">期末最大的痛点是“不知道考什么”和“做了题没人讲”。开源社区有人已经做好了一个 <mark class="key">final-review</mark> Skill，把这个流程封装成了一键调用。</p>
+      <div class="scenarios"><div class="scenario">
+        <span class="tag">实战链接</span>
+        <h3>final-review · 期末速通 Skill</h3>
+        <p><strong>仓库地址：</strong> <a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">github.com/lucianwhy/final-review</a> （开源，<strong>95 stars</strong>）</p>
+        <p><strong>它能做什么：</strong></p>
+        <ul>
+          <li>丢一份课程 PPT / 教材 PDF 进去，<mark class="key">自动出题</mark>（选择 / 填空 / 简答）</li>
+          <li>每道题附带<mark class="key">答案 + 偏得分导向的解析</mark></li>
+          <li>支持按章节、按题型筛选，<strong>复习精准度比通读笔记高 3 倍</strong></li>
+          <li>所有题目基于你给的材料生成，<strong>不联网瞎编</strong></li>
+        </ul>
+        <p style="margin-top:1rem"><strong>我的用法：</strong>考前一周，把老师 PPT + 作业题扔进去，让 AI 先出一份“高频考点清单”，再针对每章出 10 道题 → 自己做 → 让 AI 批改并讲错题。一晚上能从 60 分水平提到 80+。</p>
+      </div></div>
     </section>
 
-    <!-- ============================ 第三关：五家横评 ============================ -->
     <section class="chapter" id="sec-tools">
-      <span class="chapter-num">03 / 工具</span>
+      <span class="chapter-num">04 / 工具</span>
       <h2>薅遍 5 家 AI IDE：一张表看清谁更划算</h2>
-      <p class="lede">
-        这五家是计算机学生最常听到的。<strong>别装 5 个客户端</strong>，
-        用 <mark class="key">cc-switch</mark> 一个壳子就能切五家模型（下文会讲）。
-      </p>
-
-      <!-- ============================ 工具分享 ============================ -->
+      <p class="lede">这五家是计算机学生最常听到的。<strong>别装 5 个客户端</strong>，用 <mark class="key">cc-switch</mark> 一个壳子就能切五家模型（下文会讲）。</p>
       <h3 style="margin-top:1.8rem">🔧 工具分享 · 同学都在用的小神器</h3>
-      <p>除了上面 5 家 IDE，下面这两个是<strong>同样值得装</strong>的"配套工具"，单开一个小栏目：</p>
+      <p>除了上面 5 家 IDE，下面这几个是<strong>同样值得装</strong>的“配套工具”：</p>
       <ul class="tool-list">
-        <li>
-          <a href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener"><strong>CC Switch</strong></a>
-          <div class="tool-url">github.com/farion1231/cc-switch</div>
-          <div class="tool-desc">AI 编程工具的统一管理器，可在 Claude Code / Codex / Gemini CLI / OpenCode 等之间一键切换模型、MCP 和 Skills。</div>
-        </li>
-        <li>
-          <a href="https://github.com/nexu-io/open-design" target="_blank" rel="noopener"><strong>Open Design</strong></a>
-          <div class="tool-url">github.com/nexu-io/open-design</div>
-          <div class="tool-desc">开源的设计工作台，可作为 Claude Code / Codex / Cursor 等 AI 编程工具的"前端"，适合做设计稿 / 文档 / PPT 的同学。</div>
-        </li>
-        <li>
-          <a href="https://github.com/jlcodes99/cockpit-tools" target="_blank" rel="noopener"><strong>Cockpit Tools</strong></a>
-          <div class="tool-url">github.com/jlcodes99/cockpit-tools</div>
-          <div class="tool-desc">AI IDE 账号管理工具，支持 12+ 平台（Antigravity / Codex / Copilot / Cursor / Qoder / Trae …）一键切号、多开实例、配额监控。</div>
-        </li>
+        <li><a href="https://github.com/farion1231/cc-switch" target="_blank" rel="noopener"><strong>CC Switch</strong></a><div class="tool-url">github.com/farion1231/cc-switch</div><div class="tool-desc">AI 编程工具的统一管理器，可在 Claude Code / Codex / Gemini CLI / OpenCode 等之间一键切换模型、MCP 和 Skills。</div></li>
+        <li><a href="https://github.com/nexu-io/open-design" target="_blank" rel="noopener"><strong>Open Design</strong></a><div class="tool-url">github.com/nexu-io/open-design</div><div class="tool-desc">开源的设计工作台，可作为 Claude Code / Codex / Cursor 等 AI 编程工具的“前端”。</div></li>
+        <li><a href="https://github.com/jlcodes99/cockpit-tools" target="_blank" rel="noopener"><strong>Cockpit Tools</strong></a><div class="tool-url">github.com/jlcodes99/cockpit-tools</div><div class="tool-desc">AI IDE 账号管理工具，支持 12+ 平台一键切号、多开实例、配额监控。</div></li>
       </ul>
 
-      <!-- ============================ 视频演示：AI 做视频 ============================ -->
       <div class="video-demo">
         <h3>🎬 AI 也能做视频 · 小组作业 / 自媒体神器</h3>
-        <p>
-          下面这段画面就是 <mark class="key">Agent 写代码生成</mark> 的。
-          大学小组作业要做视频、或者自己做自媒体，不用从零学 PR / AE——
-          用 <mark class="key">AI + HeyGen / Remotion</mark> 等插件/库，就能做出这种效果。
-        </p>
-        <video controls preload="metadata" poster="">
-          <source src="demo-video.mp4" type="video/mp4">
-          你的浏览器不支持视频播放，可右键<a href="demo-video.mp4" download>下载视频</a>查看。
-        </video>
-        <p class="video-note">
-          适用场景：课程汇报片、知识口播、活动宣传、Vlog 素材包装。
-          核心思路：把"画面逻辑"交给代码（Remotion）或 AI 模板（HeyGen），你只负责改文案和素材。
-        </p>
-        <div class="video-tools">
-          <span>Remotion</span>
-          <span>HeyGen</span>
-          <span>剪映 AI 字幕</span>
-          <span>CapCut</span>
-          <span>曼波 AI 配音</span>
-        </div>
+        <p>下面这段画面就是 <mark class="key">Agent 写代码生成</mark> 的。大学小组作业要做视频、或者自己做自媒体，不用从零学 PR / AE——用 <mark class="key">AI + HeyGen / Remotion</mark> 等插件/库，就能做出这种效果。</p>
+        <video controls preload="metadata" poster=""><source src="demo-video.mp4" type="video/mp4">你的浏览器不支持视频播放，可右键<a href="demo-video.mp4" download>下载视频</a>查看。</video>
+        <p class="video-note">适用场景：课程汇报片、知识口播、活动宣传、Vlog 素材包装。核心思路：把“画面逻辑”交给代码（Remotion）或 AI 模板（HeyGen），你只负责改文案和素材。</p>
+        <div class="video-tools"><span>Remotion</span><span>HeyGen</span><span>剪映 AI 字幕</span><span>CapCut</span><span>曼波 AI 配音</span></div>
       </div>
 
-      <!-- ============================ 五家横评表 ============================ -->
       <h3 style="margin-top:1.8rem">🧾 5 家 AI IDE 横评</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>工具</th>
-              <th>厂商</th>
-              <th>一句话定位</th>
-              <th>定价 / 积分</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="tool">Codebuddy</span><div class="vendor">腾讯</div></td>
-              <td>腾讯</td>
-              <td>国产老牌 AI IDE，新手友好，跟 GLM / 混元配合顺滑</td>
-              <td><span class="price">新手送积分；闲鱼可加购（10 元以内）</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool">Trae</span><div class="vendor">字节跳动</div></td>
-              <td>字节跳动</td>
-              <td>永久免费基础版，AI 原生 IDE，代码生成准确率高</td>
-              <td><span class="price">每天刷新积分（高峰期容易排队）</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool">Qoder</span><div class="vendor">阿里</div></td>
-              <td>阿里</td>
-              <td>原生中文，对项目理解强，跟 GLM5 配合最顺滑</td>
-              <td><span class="price">学生认证送积分</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool">Codex</span><div class="vendor">OpenAI</div></td>
-              <td>OpenAI</td>
-              <td>GPT 系列代码生成，CLI 向，适合脚本 / 批处理</td>
-              <td><span class="price">GPT 账号订阅</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool">Claude</span><div class="vendor">Anthropic</div></td>
-              <td>Anthropic</td>
-              <td>长上下文 + Agent 能力强，常作"最终拍板"模型</td>
-              <td><span class="price">自家订阅；可作 cc-switch 后端</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="legend">
-        <span>价格仅为我当前已知信息，建议分享前到官网再校准</span>
-      </div>
-
+      <div class="table-wrap"><table><thead><tr><th>工具</th><th>厂商</th><th>一句话定位</th><th>定价 / 积分</th></tr></thead><tbody>
+        <tr><td><span class="tool">Codebuddy</span><div class="vendor">腾讯</div></td><td>腾讯</td><td>国产老牌 AI IDE，新手友好，跟 GLM / 混元配合顺滑</td><td><span class="price">新手送积分；闲鱼可加购（10 元以内）</span></td></tr>
+        <tr><td><span class="tool">Trae</span><div class="vendor">字节跳动</div></td><td>字节跳动</td><td>永久免费基础版，AI 原生 IDE，代码生成准确率高</td><td><span class="price">每天刷新积分（高峰期容易排队）</span></td></tr>
+        <tr><td><span class="tool">Qoder</span><div class="vendor">阿里</div></td><td>阿里</td><td>原生中文，对项目理解强，跟 GLM5 配合最顺滑</td><td><span class="price">学生认证送积分</span></td></tr>
+        <tr><td><span class="tool">Codex</span><div class="vendor">OpenAI</div></td><td>OpenAI</td><td>GPT 系列代码生成，CLI 向，适合脚本 / 批处理</td><td><span class="price">GPT 账号订阅</span></td></tr>
+        <tr><td><span class="tool">Claude</span><div class="vendor">Anthropic</div></td><td>Anthropic</td><td>长上下文 + Agent 能力强，常作“最终拍板”模型</td><td><span class="price">自家订阅；可作 cc-switch 后端</span></td></tr>
+      </tbody></table></div>
+      <div class="legend"><span>价格仅为我当前已知信息，建议分享前到官网再校准</span></div>
     </section>
 
-    <!-- ============================ AI 写代码技巧 + Q&A（替换原 04） ============================ -->
     <section class="chapter" id="sec-tips">
-      <span class="chapter-num">04 / 写码技巧</span>
+      <span class="chapter-num">05 / 写码技巧</span>
       <h2>AI 写代码的一些技巧 · 4 个常见疑问</h2>
-      <p>这一节专门留给"写代码阶段"：怎么让 AI 写得稳、写得准、不甩锅给你。</p>
-
+      <p>这一节专门留给“写代码阶段”：怎么让 AI 写得稳、写得准、不甩锅给你。</p>
       <h3 style="margin-top:1.5rem">🧠 基础使用技巧</h3>
       <ul>
-        <li><strong>先给上下文，再给任务</strong>：贴一段报错 + 关键代码 + 你期望的输出，比"帮我修一下"管用 10 倍。</li>
+        <li><strong>先给上下文，再给任务</strong>：贴一段报错 + 关键代码 + 你期望的输出，比“帮我修一下”管用 10 倍。</li>
         <li><strong>一次只改一处</strong>：让 AI 一次只动一个文件 / 一个函数，跑挂了也好回滚。</li>
-        <li><strong>明确"完成标准"</strong>：写"跑通后输出 <code>OK</code>"比"帮我看看为什么不对"省事。</li>
+        <li><strong>明确“完成标准”</strong>：写“跑通后输出 <code>OK</code>”比“帮我看看为什么不对”省事。</li>
         <li><strong>要求解释，再要求改</strong>：先让 AI 解释一遍代码为什么这么写，确认你懂，再让 AI 改。</li>
-        <li><strong>善用 diff / patch</strong>：让 AI 给"修改前后对比"，而不是直接覆盖文件——你能立刻看到改了什么。</li>
-        <li><strong>别让 AI 自己造测试</strong>：测试用例由你定（边界条件、异常路径），AI 只负责把测试填进去。</li>
+        <li><strong>善用 diff / patch</strong>：让 AI 给“修改前后对比”，而不是直接覆盖文件。</li>
+        <li><strong>别让 AI 自己造测试</strong>：测试用例由你定，AI 只负责把测试填进去。</li>
       </ul>
-
       <h3 style="margin-top:1.8rem">💬 常见疑问 · Q&amp;A</h3>
       <div class="qa">
-
-        <div class="qa-item">
-          <h3>Q1：<code>CLAUDE.md</code> / <code>AGENTS.md</code> 怎么用？</h3>
-        </div>
-
-        <div class="qa-item">
-          <h3>Q2：Git 在 AI 开发中怎么用？</h3>
-        </div>
-
-        <div class="qa-item">
-          <h3>Q3：只用 AI，我如何获得真正的提升？</h3>
-        </div>
-
-        <div class="qa-item">
-          <h3>Q4：「AI 做什么？你做什么？」</h3>
-        </div>
-
+        <div class="qa-item"><h3>Q1：<code>CLAUDE.md</code> / <code>AGENTS.md</code> 怎么用？</h3></div>
+        <div class="qa-item"><h3>Q2：Git 在 AI 开发中怎么用？</h3></div>
+        <div class="qa-item"><h3>Q3：只用 AI，我如何获得真正的提升？</h3></div>
+        <div class="qa-item"><h3>Q4：「AI 做什么？你做什么？」</h3></div>
       </div>
     </section>
 
-    <!-- ============================ 其他建议（05） ============================ -->
     <section class="chapter" id="sec-more">
-      <span class="chapter-num">05 / 其他</span>
+      <span class="chapter-num">06 / 其他</span>
       <h2>其他小建议</h2>
       <p>一些我零散觉得有用、随时会补充的技巧。</p>
-
-      <div class="tips">
-        <div class="tip">
-          <span class="emoji">📄</span>
-          <h3>长文用 HTML 展示</h3>
-          <p>信息密度比公众号/文档高，配合侧边栏导航和卡片布局，读者扫一眼就能抓住重点。</p>
-        </div>
-      </div>
+      <div class="tips"><div class="tip"><span class="emoji">📄</span><h3>长文用 HTML 展示</h3><p>信息密度比公众号/文档高，配合侧边栏导航和卡片布局，读者扫一眼就能抓住重点。</p></div></div>
     </section>
 
-    <!-- ============================ 底部转化（06） ============================ -->
     <section class="chapter" id="sec-cta">
-      <span class="chapter-num">06 / 收尾</span>
+      <span class="chapter-num">07 / 收尾</span>
       <h2>带走这套工作流</h2>
-
       <div class="cta">
         <h2>扫码进群 · 一起骑 AI</h2>
         <p class="cta-sub">群里会持续分享：AI 工具更新 / 薅羊毛技巧 / 项目实战</p>
-
-        <div class="qr-row" style="justify-content:center;">
-          <div class="qr-box">
-            <img src="douyin-qr.png" alt="抖音群聊二维码 · 一起骑 AI">
-          </div>
-        </div>
-        <div class="qr-info" style="margin-top:1rem; text-align:center;">
-          <div class="group-name">群聊：一起骑 AI</div>
-          <div class="group-id">群号 174419009335</div>
-          <div class="expire">抖音码将于 2026 年 7 月 3 号到期</div>
-        </div>
+        <div class="qr-row" style="justify-content:center;"><div class="qr-box"><img src="douyin-qr.png" alt="抖音群聊二维码 · 一起骑 AI"></div></div>
+        <div class="qr-info" style="margin-top:1rem; text-align:center;"><div class="group-name">群聊：一起骑 AI</div><div class="group-id">群号 174419009335</div><div class="expire">抖音码将于 2026 年 7 月 3 号到期</div></div>
       </div>
-
-      <p style="text-align:center; color: var(--muted); font-size:.88rem; margin-top:1rem">
-        分享结束 · 感谢观看 🙌
-      </p>
+      <p style="text-align:center; color: var(--muted); font-size:.88rem; margin-top:1rem">分享结束 · 感谢观看 🙌</p>
     </section>
 
-    <!-- ============================ 页脚 ============================ -->
-    <footer>
-      <div class="links">
-        <a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">final-review Skill</a>
-        <a href="https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md" target="_blank" rel="noopener">brainstorming Skill</a>
-      </div>
-    </footer>
-
+    <footer><div class="links"><a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">final-review Skill</a><a href="https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md" target="_blank" rel="noopener">brainstorming Skill</a></div></footer>
   </article>
 
   <script>
     (function() {
-      // 移动端侧边栏切换
       var sidebar = document.getElementById('sidebar');
       var page = document.getElementById('page');
       var toggle = document.getElementById('sidebarToggle');
@@ -1138,32 +497,18 @@
       var expand = document.getElementById('expandBtn');
 
       if (toggle && sidebar) {
-        toggle.addEventListener('click', function(e) {
-          e.stopPropagation();
-          sidebar.classList.toggle('open');
-        });
+        toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.toggle('open'); });
         document.addEventListener('click', function(e) {
-          if (window.innerWidth <= 900 && sidebar.classList.contains('open') && !sidebar.contains(e.target)) {
-            sidebar.classList.remove('open');
-          }
+          if (window.innerWidth <= 900 && sidebar.classList.contains('open') && !sidebar.contains(e.target)) sidebar.classList.remove('open');
         });
       }
-
-      // 桌面端收起/展开
       if (collapse && sidebar && page) {
-        collapse.addEventListener('click', function() {
-          sidebar.classList.add('collapsed');
-          page.classList.add('collapsed');
-        });
+        collapse.addEventListener('click', function() { sidebar.classList.add('collapsed'); page.classList.add('collapsed'); });
       }
       if (expand && sidebar && page) {
-        expand.addEventListener('click', function() {
-          sidebar.classList.remove('collapsed');
-          page.classList.remove('collapsed');
-        });
+        expand.addEventListener('click', function() { sidebar.classList.remove('collapsed'); page.classList.remove('collapsed'); });
       }
 
-      // 滚动高亮当前章节
       var links = document.querySelectorAll('.sidebar-nav a');
       var sections = [];
       links.forEach(function(a) {
@@ -1171,23 +516,16 @@
         var el = document.getElementById(id);
         if (el) sections.push({ id: id, el: el, link: a });
       });
-
       function onScroll() {
         var scrollY = window.scrollY + 80;
         var current = sections[0];
-        for (var i = 0; i < sections.length; i++) {
-          if (sections[i].el.offsetTop <= scrollY) {
-            current = sections[i];
-          }
-        }
+        for (var i = 0; i < sections.length; i++) if (sections[i].el.offsetTop <= scrollY) current = sections[i];
         links.forEach(function(a) { a.classList.remove('active'); });
         if (current) current.link.classList.add('active');
       }
-
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();
   </script>
-
 </body>
 </html>
