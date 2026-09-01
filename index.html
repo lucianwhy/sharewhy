@@ -5,92 +5,262 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>三小时搞定实训，一晚上搞定期末复习 — 还没用上这些 AI 技巧嘛？</title>
   <style>
-    :root{--bg:#faf7f2;--bg2:#f1ece2;--bg3:#fff;--ink:#1f1d1a;--ink2:#3a3733;--muted:#7a736a;--rule:#e3ddd0;--accent:#d9602b;--accent2:#1e5f5b;--max:920px;--radius:14px;--shadow:0 1px 2px rgba(31,29,26,.04),0 8px 24px rgba(31,29,26,.06)}
-    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:2rem}body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans CJK SC","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}a:hover{border-bottom-style:solid}code,pre,.mono{font-family:"JetBrains Mono","Fira Code","Cascadia Code",Consolas,monospace}
-    .sidebar{position:fixed;inset:0 auto 0 0;width:220px;height:100vh;background:var(--bg3);border-right:1px solid var(--rule);padding:1.5rem 0;z-index:100;overflow:auto;transition:transform .25s}.sidebar-brand{padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--rule);margin-bottom:1rem}.sidebar-title{font-size:1.05rem;font-weight:700}.sidebar-sub{font-size:.75rem;color:var(--muted);margin-top:.2rem;letter-spacing:.08em}.sidebar-nav{display:flex;flex-direction:column;gap:.15rem;padding:0 .8rem}.sidebar-nav a{display:block;padding:.55rem .9rem;border-radius:8px;color:var(--ink2);border:0;font-size:.9rem}.sidebar-nav a:hover{background:var(--bg2)}.sidebar-nav a.active{background:rgba(217,96,43,.1);color:var(--accent);font-weight:600}.collapse-btn,.expand-btn,.sidebar-toggle{border:1px solid var(--rule);background:var(--bg3);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}.collapse-btn{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:8px}.expand-btn{position:fixed;top:1rem;left:1rem;width:32px;height:32px;border-radius:8px;z-index:99;display:none}.sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;width:40px;height:40px;border-radius:8px;z-index:101}.sidebar.collapsed{transform:translateX(-100%)}.sidebar.collapsed + .expand-btn{display:block}article.page{max-width:var(--max);margin:0 auto;padding:0 1.2rem;transition:margin-left .25s}@media(min-width:901px){article.page{margin-left:calc(220px + max(0px,(100vw - 220px - var(--max))/2));margin-right:auto}}@media(max-width:900px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.collapse-btn,.expand-btn{display:none}.sidebar-toggle{display:block}article.page{margin-left:0;padding-top:3.5rem}}
-    h1,h2,h3,h4{line-height:1.3;color:var(--ink);font-weight:700}h2{font-size:1.65rem;margin-bottom:1rem}h3{font-size:1.15rem;margin-bottom:.6rem}p{margin-bottom:1rem;color:var(--ink2)}ul,ol{margin:0 0 1rem 1.4rem;color:var(--ink2)}li{margin-bottom:.4rem}.hero{padding:4rem 0 3rem;border-bottom:1px solid var(--rule)}.kicker{display:inline-block;font-size:.8rem;letter-spacing:.15em;color:var(--accent);font-weight:700;border-left:3px solid var(--accent);padding-left:.7rem;margin-bottom:1rem}.hero h1{font-size:clamp(1.8rem,4.5vw,2.7rem);margin-bottom:1.2rem}.hero h1 em{font-style:normal;color:var(--accent);background:linear-gradient(transparent 62%,rgba(217,96,43,.18) 62%)}.hero-meta{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}.chapter{padding:3rem 0;border-bottom:1px solid var(--rule)}.chapter-num{display:inline-block;font-family:monospace;color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.16em;margin-bottom:.5rem}.chapter h2{position:relative;padding-bottom:.7rem;margin-bottom:1.5rem}.chapter h2:after{content:"";position:absolute;left:0;bottom:0;width:48px;height:3px;background:var(--accent);border-radius:2px}.lede{font-size:1.03rem}mark.key{background:rgba(217,96,43,.12);color:var(--accent);font-weight:600;padding:0 3px;border-radius:3px}.pains,.tips,.prompt-grid,.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.pain,.tip,.cap-card,.prompt-card{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:1.15rem;box-shadow:0 1px 2px rgba(31,29,26,.02)}.pain h3,.tip h3,.cap-card h3,.prompt-card h3{font-size:1rem}.pain p,.tip p,.cap-card p,.prompt-card p{font-size:.88rem;color:var(--muted);margin:0}.cap-card{border-left:3px solid var(--accent2)}.scenarios{display:flex;flex-direction:column;gap:1.5rem}.scenario{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:1.6rem 1.5rem;box-shadow:var(--shadow);position:relative;overflow:hidden}.scenario:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--accent)}.tag{display:inline-block;font-size:.72rem;letter-spacing:.12em;font-weight:700;color:var(--accent);background:rgba(217,96,43,.1);padding:3px 10px;border-radius:999px;margin-bottom:.8rem}.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin:1rem 0}.vs .col{background:var(--bg2);border-radius:10px;padding:.9rem 1rem;font-size:.9rem}.vs .good{background:rgba(30,95,91,.08);color:var(--accent2);font-weight:600}.vs .arrow{font-size:1.3rem;color:var(--accent);font-weight:700}.terminal{background:#2a2622;color:#f3ece0;border-radius:10px;padding:1rem 1.1rem;font-size:.82rem;line-height:1.65;overflow:auto;white-space:pre-wrap}.terminal .comment{color:#9a9187}.terminal .hl{color:#f5c97c}.terminal .ok{color:#77d6aa}.prompt-card{cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}.prompt-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.prompt-card .prompt-type{font-size:.72rem;color:var(--accent);font-weight:700;letter-spacing:.08em;margin-bottom:.45rem}.prompt-card .open-hint{display:inline-block;margin-top:.85rem;font-size:.8rem;color:var(--accent2);font-weight:600}.modal{position:fixed;inset:0;background:rgba(31,29,26,.55);display:none;align-items:center;justify-content:center;padding:1rem;z-index:1000}.modal.open{display:flex}.modal-panel{width:min(820px,96vw);max-height:88vh;overflow:auto;background:var(--bg3);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.25);padding:1.4rem}.modal-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem}.modal-close{border:1px solid var(--rule);background:var(--bg2);border-radius:8px;padding:.45rem .7rem;cursor:pointer}.prompt-full{background:#f7f3ec;border:1px solid var(--rule);border-radius:10px;padding:1rem;white-space:pre-wrap;font:.84rem/1.65 "JetBrains Mono",Consolas,monospace;color:var(--ink2)}.copy-btn{margin-top:1rem;border:0;background:var(--accent);color:#fff;border-radius:9px;padding:.7rem 1rem;font-weight:700;cursor:pointer}.copy-note{font-size:.8rem;color:var(--muted);margin-left:.6rem}.tool-list{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem}.tool-list li{background:var(--bg3);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:.9rem 1.1rem;margin:0}.qa{display:flex;flex-direction:column;gap:.8rem}.qa-item{background:var(--bg3);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:1rem 1.2rem}.cta{background:linear-gradient(135deg,var(--bg2),#ede4d3);border-radius:var(--radius);padding:2rem 1.5rem;text-align:center}footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-size:.82rem}@media(max-width:640px){.vs{grid-template-columns:1fr}.vs .arrow{transform:rotate(90deg);justify-self:center}.hero{padding:2.5rem 0 2rem}}
+    :root{
+      --bg:#faf7f2;--bg2:#f1ece2;--bg3:#fff;--ink:#1f1d1a;--ink2:#3a3733;--muted:#7a736a;
+      --rule:#e3ddd0;--accent:#d9602b;--accent2:#1e5f5b;--max:920px;--radius:14px;
+      --shadow:0 1px 2px rgba(31,29,26,.04),0 8px 24px rgba(31,29,26,.06)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:2rem}
+    body{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans CJK SC","Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}
+    a{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+    a:hover{border-bottom-style:solid}
+    code,pre,.mono{font-family:"JetBrains Mono","Fira Code","Cascadia Code",Consolas,monospace}
+    .sidebar{position:fixed;inset:0 auto 0 0;width:220px;height:100vh;background:var(--bg3);border-right:1px solid var(--rule);padding:1.5rem 0;z-index:100;overflow:auto;transition:transform .25s}
+    .sidebar-brand{padding:0 1.5rem 1.2rem;border-bottom:1px solid var(--rule);margin-bottom:1rem}
+    .sidebar-title{font-size:1.05rem;font-weight:700}
+    .sidebar-sub{font-size:.75rem;color:var(--muted);margin-top:.2rem;letter-spacing:.08em}
+    .sidebar-nav{display:flex;flex-direction:column;gap:.15rem;padding:0 .8rem}
+    .sidebar-nav a{display:block;padding:.55rem .9rem;border-radius:8px;color:var(--ink2);border:0;font-size:.9rem}
+    .sidebar-nav a:hover{background:var(--bg2)}
+    .sidebar-nav a.active{background:rgba(217,96,43,.1);color:var(--accent);font-weight:600}
+    .collapse-btn,.expand-btn,.sidebar-toggle{border:1px solid var(--rule);background:var(--bg3);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+    .collapse-btn{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:8px}
+    .expand-btn{position:fixed;top:1rem;left:1rem;width:32px;height:32px;border-radius:8px;z-index:99;display:none}
+    .sidebar-toggle{display:none;position:fixed;top:1rem;left:1rem;width:40px;height:40px;border-radius:8px;z-index:101}
+    .sidebar.collapsed{transform:translateX(-100%)}
+    .sidebar.collapsed + .expand-btn{display:block}
+    article.page{max-width:var(--max);margin:0 auto;padding:0 1.2rem;transition:margin-left .25s}
+    @media(min-width:901px){article.page{margin-left:calc(220px + max(0px,(100vw - 220px - var(--max))/2));margin-right:auto}}
+    @media(max-width:900px){
+      .sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}
+      .collapse-btn,.expand-btn{display:none}.sidebar-toggle{display:block}
+      article.page{margin-left:0;padding-top:3.5rem}
+    }
+    h1,h2,h3,h4{line-height:1.3;color:var(--ink);font-weight:700}
+    h2{font-size:1.65rem;margin-bottom:1rem} h3{font-size:1.15rem;margin-bottom:.6rem}
+    p{margin-bottom:1rem;color:var(--ink2)} ul,ol{margin:0 0 1rem 1.4rem;color:var(--ink2)} li{margin-bottom:.4rem}
+    .hero{padding:4rem 0 3rem;border-bottom:1px solid var(--rule)}
+    .kicker{display:inline-block;font-size:.8rem;letter-spacing:.15em;color:var(--accent);font-weight:700;border-left:3px solid var(--accent);padding-left:.7rem;margin-bottom:1rem}
+    .hero h1{font-size:clamp(1.8rem,4.5vw,2.7rem);margin-bottom:1.2rem}.hero h1 em{font-style:normal;color:var(--accent);background:linear-gradient(transparent 62%,rgba(217,96,43,.18) 62%)}
+    .hero-meta{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+    .chapter{padding:3rem 0;border-bottom:1px solid var(--rule)}
+    .chapter-num{display:inline-block;font-family:monospace;color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.16em;margin-bottom:.5rem}
+    .chapter h2{position:relative;padding-bottom:.7rem;margin-bottom:1.5rem}.chapter h2:after{content:"";position:absolute;left:0;bottom:0;width:48px;height:3px;background:var(--accent);border-radius:2px}
+    .lede{font-size:1.03rem}
+    mark.key{background:rgba(217,96,43,.12);color:var(--accent);font-weight:600;padding:0 3px;border-radius:3px}
+    .pains,.tips,.prompt-grid,.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+    .pain,.tip,.cap-card,.prompt-card{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:1.15rem;box-shadow:0 1px 2px rgba(31,29,26,.02)}
+    .pain h3,.tip h3,.cap-card h3,.prompt-card h3{font-size:1rem}.pain p,.tip p,.cap-card p,.prompt-card p{font-size:.88rem;color:var(--muted);margin:0}
+    .cap-card{border-left:3px solid var(--accent2)}
+    .scenarios{display:flex;flex-direction:column;gap:1.5rem}.scenario{background:var(--bg3);border:1px solid var(--rule);border-radius:var(--radius);padding:1.6rem 1.5rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .scenario:before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--accent)}
+    .tag{display:inline-block;font-size:.72rem;letter-spacing:.12em;font-weight:700;color:var(--accent);background:rgba(217,96,43,.1);padding:3px 10px;border-radius:999px;margin-bottom:.8rem}
+    .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin:1rem 0}.vs .col{background:var(--bg2);border-radius:10px;padding:.9rem 1rem;font-size:.9rem}.vs .good{background:rgba(30,95,91,.08);color:var(--accent2);font-weight:600}.vs .arrow{font-size:1.3rem;color:var(--accent);font-weight:700}
+    .terminal{background:#2a2622;color:#f3ece0;border-radius:10px;padding:1rem 1.1rem;font-size:.82rem;line-height:1.65;overflow:auto;white-space:pre-wrap}.terminal .comment{color:#9a9187}.terminal .hl{color:#f5c97c}.terminal .ok{color:#77d6aa}
+    .table-wrap{overflow:auto;border:1px solid var(--rule);border-radius:10px;background:var(--bg3)}table{width:100%;border-collapse:collapse;min-width:640px;font-size:.9rem}th,td{padding:.75rem 1rem;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}th{background:var(--bg2);color:var(--muted);font-size:.8rem}
+    .prompt-card{cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}.prompt-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.prompt-card .prompt-type{font-size:.72rem;color:var(--accent);font-weight:700;letter-spacing:.08em;margin-bottom:.45rem}.prompt-card .open-hint{display:inline-block;margin-top:.85rem;font-size:.8rem;color:var(--accent2);font-weight:600}
+    .modal{position:fixed;inset:0;background:rgba(31,29,26,.55);display:none;align-items:center;justify-content:center;padding:1rem;z-index:1000}.modal.open{display:flex}.modal-panel{width:min(820px,96vw);max-height:88vh;overflow:auto;background:var(--bg3);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.25);padding:1.4rem}.modal-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem}.modal-close{border:1px solid var(--rule);background:var(--bg2);border-radius:8px;padding:.45rem .7rem;cursor:pointer}.prompt-full{background:#f7f3ec;border:1px solid var(--rule);border-radius:10px;padding:1rem;white-space:pre-wrap;font:.84rem/1.65 "JetBrains Mono",Consolas,monospace;color:var(--ink2)}.copy-btn{margin-top:1rem;border:0;background:var(--accent);color:#fff;border-radius:9px;padding:.7rem 1rem;font-weight:700;cursor:pointer}.copy-note{font-size:.8rem;color:var(--muted);margin-left:.6rem}
+    .tool-list{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.8rem}.tool-list li{background:var(--bg3);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:.9rem 1.1rem;margin:0}
+    .qa{display:flex;flex-direction:column;gap:.8rem}.qa-item{background:var(--bg3);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:10px;padding:1rem 1.2rem}
+    .cta{background:linear-gradient(135deg,var(--bg2),#ede4d3);border-radius:var(--radius);padding:2rem 1.5rem;text-align:center}
+    footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-size:.82rem}
+    @media(max-width:640px){.vs{grid-template-columns:1fr}.vs .arrow{transform:rotate(90deg);justify-self:center}.hero{padding:2.5rem 0 2rem}}
   </style>
 </head>
 <body>
-  <aside class="sidebar" id="sidebar"><button class="collapse-btn" id="collapseBtn">←</button><div class="sidebar-brand"><div class="sidebar-title">AI 提效手册</div><div class="sidebar-sub">快速导航</div></div><nav class="sidebar-nav"><a href="#hero" class="nav-link active">首页</a><a href="#sec-pain" class="nav-link">00 / 共鸣</a><a href="#sec-secretary" class="nav-link">01 / AI 秘书</a><a href="#sec-vm" class="nav-link">02 / 学业</a><a href="#sec-final" class="nav-link">03 / 期末</a><a href="#sec-tools" class="nav-link">04 / 工具</a><a href="#sec-prompts" class="nav-link">05 / 提示词</a><a href="#sec-tips" class="nav-link">06 / 写码技巧</a><a href="#sec-more" class="nav-link">07 / 其他</a><a href="#sec-cta" class="nav-link">08 / 收尾</a></nav></aside><button class="expand-btn" id="expandBtn">→</button><button class="sidebar-toggle" id="sidebarToggle">☰</button>
+  <aside class="sidebar" id="sidebar">
+    <button class="collapse-btn" id="collapseBtn">←</button>
+    <div class="sidebar-brand"><div class="sidebar-title">AI 提效手册</div><div class="sidebar-sub">快速导航</div></div>
+    <nav class="sidebar-nav">
+      <a href="#hero" class="nav-link active">首页</a>
+      <a href="#sec-pain" class="nav-link">00 / 共鸣</a>
+      <a href="#sec-secretary" class="nav-link">01 / AI 秘书</a>
+      <a href="#sec-vm" class="nav-link">02 / 学业</a>
+      <a href="#sec-final" class="nav-link">03 / 期末</a>
+      <a href="#sec-tools" class="nav-link">04 / 工具</a>
+      <a href="#sec-prompts" class="nav-link">05 / 提示词</a>
+      <a href="#sec-tips" class="nav-link">06 / 写码技巧</a>
+      <a href="#sec-more" class="nav-link">07 / 其他</a>
+      <a href="#sec-cta" class="nav-link">08 / 收尾</a>
+    </nav>
+  </aside>
+  <button class="expand-btn" id="expandBtn">→</button>
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
   <article class="page" id="page">
-    <header class="hero" id="hero"><span class="kicker">大学生 AI 提效手册</span><h1>三小时搞定实训，一晚上搞定期末复习，<br>你<em>还没用上</em>这些 AI 技巧嘛？</h1><div class="hero-meta"><span><strong>场景</strong> AI 秘书 / 实训 / 期末 / 项目</span><span><strong>核心</strong> ChatGPT + Agent + MCP + Skills</span><span><strong>目标</strong> 真正让 AI 帮你干活</span></div></header>
-    <section class="chapter" id="sec-pain"><span class="chapter-num">00 / 共鸣</span><h2>先看看你是不是也这样</h2><div class="pains"><div class="pain"><h3>实训要装 Linux 虚机</h3><p>搜教程、敲命令、配 SSH，最后卡在一个环境问题上。</p></div><div class="pain"><h3>期末复习找不到重点</h3><p>材料很多，却不知道先看什么、怎么出题、哪里最容易丢分。</p></div><div class="pain"><h3>每天一堆零碎事情</h3><p>任务、日历、资料、聊天记录分散在不同 App 里，每次都要自己整理。</p></div><div class="pain"><h3>AI 用了很多，还是只会问答</h3><p>工具装了一堆，却没有把 AI 接到真正的数据和工作流里。</p></div></div></section>
-    <section class="chapter" id="sec-secretary"><span class="chapter-num">01 / AI 秘书</span><h2>别只拿 ChatGPT 问问题：把它变成你的 AI 秘书</h2><p class="lede">我现在更常用 ChatGPT 的方式，不是“问一句、答一句”，而是让它<mark class="key">知道我在做什么、读我的资料、调用外部工具、最后帮我把事情推进下去</mark>。</p><div class="scenarios"><div class="scenario"><span class="tag">核心变化</span><h3>普通 ChatGPT vs AI 秘书</h3><div class="vs"><div class="col">每次重新交代背景 → 问问题 → 自己去执行</div><div class="arrow">→</div><div class="col good">长期上下文 → 查真实资料 → 调工具 → 记任务 / 排日历 / 执行动作</div></div><h3 style="margin-top:1.5rem">我现在把它接到了哪些东西上？</h3><div class="cap-grid"><div class="cap-card"><h3>任务和日历</h3><p>读 TickTick、安排待办、看截止时间、写入 Google Calendar，再从一堆事情里挑今天真正该做的。</p></div><div class="cap-card"><h3>文件和项目</h3><p>从 Google Drive 找资料、读 GitHub 仓库、接着以前的项目继续推进，不用每次手工复制背景。</p></div><div class="cap-card"><h3>公开数据获取</h3><p>接上对应 MCP / API 后，可以把公众号文章与评论、抖音评论和视频字幕、小红书笔记/评论/博主公开数据等抓回来，再交给 AI 做整理、总结和分析。</p></div><div class="cap-card"><h3>自动处理信息</h3><p>不是只“搜到”，而是继续做清洗、分类、提炼观点、找高频问题、生成表格或形成下一步行动。</p></div></div><h3 style="margin-top:1.5rem">一个很真实的例子</h3><pre class="terminal"><span class="comment"># 我只说一句</span>
+    <header class="hero" id="hero">
+      <span class="kicker">大学生 AI 提效手册</span>
+      <h1>三小时搞定实训，一晚上搞定期末复习，<br>你<em>还没用上</em>这些 AI 技巧嘛？</h1>
+      <div class="hero-meta"><span><strong>场景</strong> AI 秘书 / 实训 / 期末 / 项目</span><span><strong>核心</strong> ChatGPT + Agent + MCP + Skills</span><span><strong>目标</strong> 真正让 AI 帮你干活</span></div>
+    </header>
+
+    <section class="chapter" id="sec-pain">
+      <span class="chapter-num">00 / 共鸣</span>
+      <h2>先看看你是不是也这样</h2>
+      <div class="pains">
+        <div class="pain"><h3>实训要装 Linux 虚机</h3><p>搜教程、敲命令、配 SSH，最后卡在一个环境问题上。</p></div>
+        <div class="pain"><h3>期末复习找不到重点</h3><p>材料很多，却不知道先看什么、怎么出题、哪里最容易丢分。</p></div>
+        <div class="pain"><h3>每天一堆零碎事情</h3><p>任务、日历、资料、聊天记录分散在不同 App 里，每次都要自己整理。</p></div>
+        <div class="pain"><h3>AI 用了很多，还是只会问答</h3><p>工具装了一堆，却没有把 AI 接到真正的数据和工作流里。</p></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-secretary">
+      <span class="chapter-num">01 / AI 秘书</span>
+      <h2>别只拿 ChatGPT 问问题：把它变成你的 AI 秘书</h2>
+      <p class="lede">我现在更常用 ChatGPT 的方式，不是“问一句、答一句”，而是让它<mark class="key">知道我在做什么、读我的资料、调用外部工具、最后帮我把事情推进下去</mark>。</p>
+      <div class="scenarios">
+        <div class="scenario">
+          <span class="tag">核心变化</span>
+          <h3>普通 ChatGPT vs AI 秘书</h3>
+          <div class="vs"><div class="col">每次重新交代背景 → 问问题 → 自己去执行</div><div class="arrow">→</div><div class="col good">长期上下文 → 查真实资料 → 调工具 → 记任务 / 排日历 / 执行动作</div></div>
+          <h3 style="margin-top:1.5rem">我现在把它接到了哪些东西上？</h3>
+          <div class="cap-grid">
+            <div class="cap-card"><h3>任务和日历</h3><p>读 TickTick、安排待办、看截止时间、写入 Google Calendar，再从一堆事情里挑今天真正该做的。</p></div>
+            <div class="cap-card"><h3>文件和项目</h3><p>从 Google Drive 找资料、读 GitHub 仓库、接着以前的项目继续推进，不用每次手工复制背景。</p></div>
+            <div class="cap-card"><h3>公开数据获取</h3><p>接上对应 MCP / API 后，可以把公众号文章与评论、抖音评论和视频字幕、小红书笔记/评论/博主公开数据等抓回来，再交给 AI 做整理、总结和分析。</p></div>
+            <div class="cap-card"><h3>自动处理信息</h3><p>不是只“搜到”，而是继续做清洗、分类、提炼观点、找高频问题、生成表格或形成下一步行动。</p></div>
+          </div>
+          <h3 style="margin-top:1.5rem">一个很真实的例子</h3>
+          <pre class="terminal"><span class="comment"># 我只说一句</span>
 <span class="hl">“明天下午我要给学弟做 AI 分享，4 点开始。
 你先帮我记一下，再看看我之前做过什么分享，
 告诉我今晚最应该先准备什么。”</span>
 
 <span class="comment"># AI 秘书背后做的事情</span>
-<span class="ok">理解时间和目标 → 写进待办 → 找旧项目/资料 → 判断优先级 → 给出下一步</span></pre><p style="margin-top:1rem"><strong>一句话：</strong>ChatGPT 像大脑，Memory / 项目上下文像记忆，TickTick / Calendar / Drive / GitHub / 数据平台是外部系统，插件和 MCP 像把它们接起来的手和脚。</p></div></div></section>
-    <section class="chapter" id="sec-vm"><span class="chapter-num">02 / 学业</span><h2>三小时搞定实训：用 Agent 接管一台 Linux 虚机</h2><p class="lede">传统做法是手敲命令 + 踩坑；Agent 的思路是把环境和完成标准交代清楚，让 AI 真正进入终端执行。</p><div class="scenario"><span class="tag">场景对比</span><div class="vs"><div class="col">搜 5 篇博客 → 抄命令 → SSH 配错 → 继续排错</div><div class="arrow">→</div><div class="col good">开启 SSH → 给 Agent 环境信息 → 用 tmux 保持会话 → AI 自己执行并回读确认</div></div><h3 style="margin-top:1.4rem">关键不是“让 AI 告诉你命令”，而是让它知道完成标准</h3><pre class="terminal"><span class="hl">用 SSH 连接 VMware 虚拟机，只通过宿主机 ssh + 虚机 tmux 工作。
+<span class="ok">理解时间和目标 → 写进待办 → 找旧项目/资料 → 判断优先级 → 给出下一步</span></pre>
+          <p style="margin-top:1rem"><strong>一句话：</strong>ChatGPT 像大脑，Memory / 项目上下文像记忆，TickTick / Calendar / Drive / GitHub / 数据平台是外部系统，插件和 MCP 像把它们接起来的手和脚。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-vm">
+      <span class="chapter-num">02 / 学业</span>
+      <h2>三小时搞定实训：用 Agent 接管一台 Linux 虚机</h2>
+      <p class="lede">传统做法是手敲命令 + 踩坑；Agent 的思路是把环境和完成标准交代清楚，让 AI 真正进入终端执行。</p>
+      <div class="scenario">
+        <span class="tag">场景对比</span>
+        <div class="vs"><div class="col">搜 5 篇博客 → 抄命令 → SSH 配错 → 继续排错</div><div class="arrow">→</div><div class="col good">开启 SSH → 给 Agent 环境信息 → 用 tmux 保持会话 → AI 自己执行并回读确认</div></div>
+        <h3 style="margin-top:1.4rem">关键不是“让 AI 告诉你命令”，而是让它知道完成标准</h3>
+        <pre class="terminal"><span class="hl">用 SSH 连接 VMware 虚拟机，只通过宿主机 ssh + 虚机 tmux 工作。
 先检查共享会话；不存在就创建。
 后续操作都发到 tmux。
 执行完成后回读 pane，确认目标真的完成。
-不要做无关环境探测。</span></pre></div></section>
-    <section class="chapter" id="sec-final"><span class="chapter-num">03 / 期末</span><h2>一晚上搞定期末复习：让 AI 帮你出题 + 解析</h2><p class="lede">把老师 PPT、教材或笔记喂给 AI，先抽高频考点，再按章节出题、做题、批改、讲错题。重点不是“让 AI 替你考试”，而是把复习反馈速度拉起来。</p><div class="scenario"><span class="tag">Skill</span><h3>final-review · 期末速通 Skill</h3><p><a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">github.com/lucianwhy/final-review</a></p><ul><li>基于你给的课程资料抽考点</li><li>生成选择 / 填空 / 简答等题型</li><li>做完继续批改并解释错题</li><li>把一次性的复习方法封装成可以重复调用的 Skill</li></ul></div></section>
-    <section class="chapter" id="sec-tools"><span class="chapter-num">04 / 工具</span><h2>工具不是越多越好：挑能进入工作流的</h2><ul class="tool-list"><li><strong>CC Switch</strong><p>统一管理 Claude Code / Codex / Gemini CLI / OpenCode 等模型、MCP 和 Skills。</p></li><li><strong>Open Design</strong><p>给 AI 编程工具配一个更适合设计、文档和页面产出的前端工作台。</p></li><li><strong>Cockpit Tools</strong><p>管理多个 AI IDE 账号、实例和配额，适合经常切工具的人。</p></li></ul><p style="margin-top:1rem;color:var(--muted)">工具和价格变化很快，现场分享以“它解决什么问题”为主，不把时间耗在背参数上。</p></section>
-    <section class="chapter" id="sec-prompts"><span class="chapter-num">05 / 提示词</span><h2>我自己在用的提示词 · 点开就能复制</h2><p class="lede">这些不是临时编的“万能 Prompt”，而是从我 Google Drive 里现有的工作流和写作资料里整理出的可复用版本。先给你们 3 个真正容易用上的。</p><div class="prompt-grid"><article class="prompt-card" data-prompt="trend"><div class="prompt-type">信息分析</div><h3>热点弱信号分析</h3><p>不只总结“发生了什么”，而是找跨平台温差、观点冲突、异常变化和可能的商业/行动机会。</p><span class="open-hint">点开查看并复制 →</span></article><article class="prompt-card" data-prompt="writing"><div class="prompt-type">写作</div><h3>把零散素材写成一篇像人写的文章</h3><p>适合语音输入、项目复盘和经历分享：先还原事实，再抓冲突和变化，不替你虚构经历。</p><span class="open-hint">点开查看并复制 →</span></article><article class="prompt-card" data-prompt="video"><div class="prompt-type">内容创作</div><h3>短视频脚本结构选型</h3><p>先判断素材最强属性，再决定用场景代入、数据反转、案例驱动还是时间线，不机械套模板。</p><span class="open-hint">点开查看并复制 →</span></article></div><p style="margin-top:1rem;color:var(--muted);font-size:.86rem">提示：第三个是“结构 toolbox”，不是固定模板。好的内容先看素材最强属性，再选结构。</p></section>
-    <section class="chapter" id="sec-tips"><span class="chapter-num">06 / 写码技巧</span><h2>AI 写代码的一些技巧</h2><ul><li><strong>先给上下文，再给任务：</strong>报错、关键代码、目标输出，比一句“帮我修一下”有效得多。</li><li><strong>明确完成标准：</strong>让 AI 跑测试、回读结果，不靠“应该好了”。</li><li><strong>把大任务拆成可验证的小步：</strong>一处一改、一轮一测，出错更容易定位。</li><li><strong>善用 Git：</strong>AI 写得越快，越需要版本控制兜底。</li><li><strong>让 AI 解释为什么：</strong>你不需要手敲所有代码，但至少要能判断它做得对不对。</li></ul><div class="qa"><div class="qa-item"><h3>Q1：CLAUDE.md / AGENTS.md 怎么用？</h3></div><div class="qa-item"><h3>Q2：Git 在 AI 开发中怎么用？</h3></div><div class="qa-item"><h3>Q3：只用 AI，我如何获得真正的提升？</h3></div><div class="qa-item"><h3>Q4：AI 做什么？你做什么？</h3></div></div></section>
-    <section class="chapter" id="sec-more"><span class="chapter-num">07 / 其他</span><h2>其他小建议</h2><div class="tips"><div class="tip"><h3>长内容用 HTML 展示</h3><p>信息密度高，能放导航、代码、卡片、视频和交互。分享结束以后网页还能继续当资料页。</p></div><div class="tip"><h3>把一次成功的方法封成 Skill / Prompt</h3><p>真正值钱的不是某次 AI 给了好答案，而是下次你还能稳定复用。</p></div></div></section>
-    <section class="chapter" id="sec-cta"><span class="chapter-num">08 / 收尾</span><h2>带走这套工作流</h2><div class="cta"><h3>今天先记住一句话</h3><p>别只问“哪个 AI 更强”，多问一句：<strong>我能不能把它接进真实工作流，让它替我完成下一步？</strong></p><p style="margin:0;color:var(--muted)">后续还会继续补充 Prompt、Skill、MCP 和实际项目案例。</p></div></section>
+不要做无关环境探测。</span></pre>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-final">
+      <span class="chapter-num">03 / 期末</span>
+      <h2>一晚上搞定期末复习：让 AI 帮你出题 + 解析</h2>
+      <p class="lede">把老师 PPT、教材或笔记喂给 AI，先抽高频考点，再按章节出题、做题、批改、讲错题。重点不是“让 AI 替你考试”，而是把复习反馈速度拉起来。</p>
+      <div class="scenario">
+        <span class="tag">Skill</span>
+        <h3>final-review · 期末速通 Skill</h3>
+        <p><a href="https://github.com/lucianwhy/final-review" target="_blank" rel="noopener">github.com/lucianwhy/final-review</a></p>
+        <ul><li>基于你给的课程资料抽考点</li><li>生成选择 / 填空 / 简答等题型</li><li>做完继续批改并解释错题</li><li>把一次性的复习方法封装成可以重复调用的 Skill</li></ul>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-tools">
+      <span class="chapter-num">04 / 工具</span>
+      <h2>工具不是越多越好：挑能进入工作流的</h2>
+      <ul class="tool-list">
+        <li><strong>CC Switch</strong><p>统一管理 Claude Code / Codex / Gemini CLI / OpenCode 等模型、MCP 和 Skills。</p></li>
+        <li><strong>Open Design</strong><p>给 AI 编程工具配一个更适合设计、文档和页面产出的前端工作台。</p></li>
+        <li><strong>Cockpit Tools</strong><p>管理多个 AI IDE 账号、实例和配额，适合经常切工具的人。</p></li>
+      </ul>
+      <p style="margin-top:1rem;color:var(--muted)">工具和价格变化很快，现场分享以“它解决什么问题”为主，不把时间耗在背参数上。</p>
+    </section>
+
+    <section class="chapter" id="sec-prompts">
+      <span class="chapter-num">05 / 提示词</span>
+      <h2>卡兹克分享的 12 个提示词 · 点开就能复制</h2>
+      <p class="lede">这里直接放原文，不做二次改写。每张卡片只保留一句用途说明，点进去就是完整提示词，可以一键复制。</p>
+      <div class="prompt-grid">
+        <article class="prompt-card" data-prompt="p01"><div class="prompt-type">提问</div><h3>苏格拉底式提问｜提问</h3><p>先不急着给建议，通过最多 6 个问题把“表面问题”追到真正值得回答的问题。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p02"><div class="prompt-type">学习</div><h3>双层解释法｜学习</h3><p>同一个知识点先讲小白版，再讲专业版，把“听懂了”和“真正理解”分开。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p03"><div class="prompt-type">拆解</div><h3>反向拆解｜拆解</h3><p>拿一个优秀成品倒推它为什么有效，再提炼成可以迁移的规律和操作清单。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p04"><div class="prompt-type">研究</div><h3>横纵分析法｜研究</h3><p>纵向看历史和路径依赖，横向看竞争与差异，再把两条轴合起来判断未来。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p05"><div class="prompt-type">核查</div><h3>事实核查｜核查</h3><p>把事实、推论和价值判断拆开，逐层检查证据以及推理链有没有跳步。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p06"><div class="prompt-type">会诊</div><h3>专家会诊｜会诊</h3><p>让三种真正互补的专业视角分别判断，再互相质疑，最后收敛成一个方案。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p07"><div class="prompt-type">原理</div><h3>第一性原理｜原理</h3><p>先把行业惯例和默认假设拿掉，只保留基本事实、真实目标、资源和约束重新推导。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p08"><div class="prompt-type">迁移</div><h3>跨领域借解｜迁移</h3><p>先把问题抽象成底层结构，再去三个相距很远的领域寻找相似机制并迁移回来。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p09"><div class="prompt-type">决策</div><h3>双向钢人论证｜决策</h3><p>不要给两个选项各打五十大板，而是把双方都论证到最强，再找真正会改变结论的变量。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p10"><div class="prompt-type">实验</div><h3>用最小实验替代空想｜实验</h3><p>不靠脑内争论做决定，先找关键假设，再设计低成本、可逆、短周期的验证实验。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p11"><div class="prompt-type">天赋</div><h3>挖掘隐藏天赋｜天赋</h3><p>从童年怪癖、无意识胜任区、能量模式和嫉妒对象里，反推可迁移的底层天赋。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+        <article class="prompt-card" data-prompt="p12"><div class="prompt-type">人生</div><h3>人生设计术｜人生</h3><p>把人生当成可以反复设计和做原型的项目，先看清位置，再生成三条都值得认真考虑的路。</p><span class="open-hint">点开查看原文并复制 →</span></article>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-tips">
+      <span class="chapter-num">06 / 写码技巧</span>
+      <h2>AI 写代码的一些技巧</h2>
+      <ul>
+        <li><strong>先给上下文，再给任务：</strong>报错、关键代码、目标输出，比一句“帮我修一下”有效得多。</li>
+        <li><strong>明确完成标准：</strong>让 AI 跑测试、回读结果，不靠“应该好了”。</li>
+        <li><strong>把大任务拆成可验证的小步：</strong>一处一改、一轮一测，出错更容易定位。</li>
+        <li><strong>善用 Git：</strong>AI 写得越快，越需要版本控制兜底。</li>
+        <li><strong>让 AI 解释为什么：</strong>你不需要手敲所有代码，但至少要能判断它做得对不对。</li>
+      </ul>
+      <div class="qa">
+        <div class="qa-item"><h3>Q1：CLAUDE.md / AGENTS.md 怎么用？</h3></div>
+        <div class="qa-item"><h3>Q2：Git 在 AI 开发中怎么用？</h3></div>
+        <div class="qa-item"><h3>Q3：只用 AI，我如何获得真正的提升？</h3></div>
+        <div class="qa-item"><h3>Q4：AI 做什么？你做什么？</h3></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-more">
+      <span class="chapter-num">07 / 其他</span>
+      <h2>其他小建议</h2>
+      <div class="tips">
+        <div class="tip"><h3>长内容用 HTML 展示</h3><p>信息密度高，能放导航、代码、卡片、视频和交互。分享结束以后网页还能继续当资料页。</p></div>
+        <div class="tip"><h3>把一次成功的方法封成 Skill / Prompt</h3><p>真正值钱的不是某次 AI 给了好答案，而是下次你还能稳定复用。</p></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="sec-cta">
+      <span class="chapter-num">08 / 收尾</span>
+      <h2>带走这套工作流</h2>
+      <div class="cta">
+        <h3>今天先记住一句话</h3>
+        <p>别只问“哪个 AI 更强”，多问一句：<strong>我能不能把它接进真实工作流，让它替我完成下一步？</strong></p>
+        <p style="margin:0;color:var(--muted)">后续还会继续补充 Prompt、Skill、MCP 和实际项目案例。</p>
+      </div>
+    </section>
+
     <footer>分享页持续更新 · lucianwhy/sharewhy</footer>
   </article>
-  <div class="modal" id="promptModal" aria-hidden="true"><div class="modal-panel"><div class="modal-head"><div><div class="chapter-num">PROMPT DETAIL</div><h2 id="modalTitle">提示词</h2></div><button class="modal-close" id="modalClose">关闭</button></div><div class="prompt-full" id="modalPrompt"></div><button class="copy-btn" id="copyPrompt">复制提示词</button><span class="copy-note" id="copyNote"></span></div></div>
+
+  <div class="modal" id="promptModal" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-head"><div><div class="chapter-num">PROMPT DETAIL</div><h2 id="modalTitle">提示词</h2></div><button class="modal-close" id="modalClose">关闭</button></div>
+      <div class="prompt-full" id="modalPrompt"></div>
+      <button class="copy-btn" id="copyPrompt">复制提示词</button><span class="copy-note" id="copyNote"></span>
+    </div>
+  </div>
+
+  <script src="prompts-data.js"></script>
   <script>
     (function(){
-      const prompts={trend:{title:"热点弱信号分析",text:`你是一名高级公开信息分析助手。下面我会给你来自多个平台的热点、评论、新闻或内容数据。
-
-不要只做摘要。请重点完成：
-
-1. 先判断当前最重要的 1～3 条主线，并说明为什么它们重要。
-2. 找“平台温差”：同一个话题在哪些平台很热、哪些平台很冷？这种差异说明了什么？
-3. 找“观点冲突”：大众、媒体、专业人士、不同群体之间有没有明显分歧？分歧背后的利益或认知差异是什么？
-4. 找“弱信号”：有哪些现在还不热门，但可能继续放大的技术、产品、需求或行为变化？
-5. 做交叉验证：不要因为一个平台很热就下结论，尽量用不同来源互相验证。
-6. 最后给出行动建议：哪些值得继续跟踪？哪些只是噪音？如果存在商业机会，请说明“谁有需求、为什么愿意付费、最低成本怎么验证”。
-
-输出尽量直接，少写“综上所述”之类空话。区分事实、推断和待验证判断。`},writing:{title:"把零散素材写成一篇像人写的文章",text:`我会给你一段语音转写、零散经历、项目记录或聊天素材。请把它整理成一篇自然的中文文章。
-
-先在内部完成：
-1. 找出真实发生了什么；
-2. 按真实先后顺序排列动作；
-3. 区分事实、我的感受、我的判断和待核验信息；
-4. 找出这件事真正值得讲的冲突、变化或反常点。
-
-写作要求：
-- 默认第一人称；
-- 像一个刚把东西跑通的人在给朋友讲，不要写成产品说明书；
-- 场景、动作、失败、等待、成本、数字和结果优先；
-- 不要虚构我没有提供的现场、对白、心理活动和精确结果；
-- 一段通常 1～3 句，一个段落只推进一件事；
-- 开头尽快进入具体事情，不要用“随着人工智能发展”“今天给大家分享”；
-- 技术名词可以准确使用，但要说人话；
-- 结尾停在我现在的真实判断，不要强行升华。
-
-如果材料足够，直接写；如果不足以支撑完整长文，只问最多 3 个真正必要的问题。`},video:{title:"短视频脚本结构选型",text:`你先不要直接写脚本。先判断我给你的素材“最强的传播属性”是什么，再选结构。
-
-可选结构包括：
-- 强场景 / 强代入：第二人称场景代入 → 反转 → 核心观点；
-- 强数据反差：直接甩关键数字 → 反直觉对比 → 数据驱动叙事；
-- 多个真实案例：标志性案例开场 → 抽象出共同规律 → 用 3 个观察展开；
-- 强时间变化：按时间线推进 → 每个阶段给一个变化；
-- 强比喻：先用具体载体建立 metaphor → 再翻译到真正主题；
-- 强观点冲突：先抛最尖锐冲突 → 展示双方逻辑 → 给我的判断。
-
-执行步骤：
-1. 用一句话判断素材最强属性；
-2. 给出你选择的结构，并说明为什么；
-3. 只保留最值得讲的 3 个观察，不为了完整塞满所有信息；
-4. 开头禁止“大家好 / 今天聊一聊 / 近年来”；
-5. 每一个抽象观点旁边都尽量放一个真实动作、数字、案例或画面；
-6. 输出段落版脚本，不要写成一行一行字幕；
-7. 最后指出：这套结构里哪一部分最可能成为观众记住或转发的 MVP 句。
-
-注意：结构是 toolbox，不是 mold。不要为了套模板牺牲素材本身最强的东西。`}};
-      const sidebar=document.getElementById('sidebar');document.getElementById('sidebarToggle').addEventListener('click',e=>{e.stopPropagation();sidebar.classList.toggle('open')});document.getElementById('collapseBtn').addEventListener('click',()=>sidebar.classList.add('collapsed'));document.getElementById('expandBtn').addEventListener('click',()=>sidebar.classList.remove('collapsed'));
-      const links=[...document.querySelectorAll('.sidebar-nav a')],sections=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);function onScroll(){const y=window.scrollY+90;let cur=sections[0];sections.forEach(s=>{if(s.el.offsetTop<=y)cur=s});links.forEach(a=>a.classList.remove('active'));if(cur)cur.a.classList.add('active')}addEventListener('scroll',onScroll,{passive:true});onScroll();
-      const modal=document.getElementById('promptModal'),title=document.getElementById('modalTitle'),body=document.getElementById('modalPrompt'),note=document.getElementById('copyNote');document.querySelectorAll('.prompt-card').forEach(card=>card.addEventListener('click',()=>{const p=prompts[card.dataset.prompt];title.textContent=p.title;body.textContent=p.text;note.textContent='';modal.classList.add('open');modal.setAttribute('aria-hidden','false')}));function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}document.getElementById('modalClose').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});document.getElementById('copyPrompt').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(body.textContent);note.textContent='已复制'}catch(e){const r=document.createRange();r.selectNode(body);const s=getSelection();s.removeAllRanges();s.addRange(r);note.textContent='已选中，请手动复制'}});
+      const prompts = window.PROMPTS;
+      const sidebar=document.getElementById('sidebar'), page=document.getElementById('page');
+      document.getElementById('sidebarToggle').addEventListener('click',e=>{e.stopPropagation();sidebar.classList.toggle('open')});
+      document.getElementById('collapseBtn').addEventListener('click',()=>sidebar.classList.add('collapsed'));
+      document.getElementById('expandBtn').addEventListener('click',()=>sidebar.classList.remove('collapsed'));
+      const links=[...document.querySelectorAll('.sidebar-nav a')];
+      const sections=links.map(a=>({a,el:document.querySelector(a.getAttribute('href'))})).filter(x=>x.el);
+      function onScroll(){const y=window.scrollY+90;let cur=sections[0];sections.forEach(s=>{if(s.el.offsetTop<=y)cur=s});links.forEach(a=>a.classList.remove('active'));if(cur)cur.a.classList.add('active')}
+      addEventListener('scroll',onScroll,{passive:true});onScroll();
+      const modal=document.getElementById('promptModal'), title=document.getElementById('modalTitle'), body=document.getElementById('modalPrompt'), note=document.getElementById('copyNote');
+      document.querySelectorAll('.prompt-card').forEach(card=>card.addEventListener('click',()=>{const p=prompts[card.dataset.prompt];title.textContent=p.title;body.textContent=p.text;note.textContent='';modal.classList.add('open');modal.setAttribute('aria-hidden','false')}));
+      function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+      document.getElementById('modalClose').addEventListener('click',closeModal);
+      modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+      document.getElementById('copyPrompt').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(body.textContent);note.textContent='已复制'}catch(e){const r=document.createRange();r.selectNode(body);const s=getSelection();s.removeAllRanges();s.addRange(r);note.textContent='已选中，请手动复制'}});
     })();
   </script>
 </body>
